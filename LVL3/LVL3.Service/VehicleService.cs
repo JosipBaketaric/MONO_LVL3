@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using LVL3.Service.Common;
 using LVL3.DAL;
 using LVL3.Model;
-
+using System.Data.Entity;
 
 namespace LVL3.Service
 {
@@ -26,64 +26,73 @@ namespace LVL3.Service
             instance = new VehicleService();
             return instance;
         }
-        public bool Create(VehicleMake vehicleMake)
+        public async Task Create(VehicleMake vehicleMake)
         {
-            throw new NotImplementedException();
+            this.db.VehicleMakes.Add(vehicleMake);
+            await db.SaveChangesAsync();           
         }
 
-        public bool Create(VehicleModel vehicleModel)
+        public async Task Create(VehicleModel vehicleModel)
         {
-            throw new NotImplementedException();
+            this.db.VehicleModels.Add(vehicleModel);
+            await db.SaveChangesAsync();
         }
 
-        public bool DeleteMake(int? id)
+        public async Task DeleteMake(int? id)
         {
-            throw new NotImplementedException();
+            this.db.VehicleMakes.Remove(await db.VehicleMakes.FindAsync(id) );
         }
 
-        public bool DeleteModel(int? id)
+        public async Task DeleteModel(int? id)
         {
-            throw new NotImplementedException();
+            this.db.VehicleModels.Remove(await db.VehicleModels.FindAsync(id) );
         }
 
-        public LVL3.Model.VehicleMake FindMakeById(int? id)
+        public async Task<VehicleMake> FindMakeById(int? id)
         {
-            throw new NotImplementedException();
+            VehicleMake vehicleMake = await this.db.VehicleMakes.FindAsync(id);
+            return vehicleMake;
         }
 
-        public LVL3.Model.VehicleModel FindModelById(int? id)
+        public async Task<VehicleModel> FindModelById(int? id)
         {
-            throw new NotImplementedException();
+            VehicleModel vehicleModel = await this.db.VehicleModels.FindAsync(id);
+            return vehicleModel;
         }
 
-        public IEnumerable ReadAllMakes()
+        public async Task<IEnumerable> ReadAllMakes()
         {
-            throw new NotImplementedException();
+            IEnumerable<VehicleMake> makesList = await this.db.VehicleMakes.ToListAsync();
+            return makesList;
         }
 
-        public IEnumerable ReadAllModels()
+        public async Task<IEnumerable> ReadAllModels()
         {
-            throw new NotImplementedException();
+            IEnumerable<VehicleModel> modelsList = await this.db.VehicleModels.ToListAsync();
+            return modelsList;
         }
 
-        public LVL3.Model.VehicleMake ReadMake(int? id)
+        public async Task<VehicleMake> ReadMake(int? id)
         {
-            throw new NotImplementedException();
+            return await this.db.VehicleMakes.FindAsync(id);
         }
 
-        public LVL3.Model.VehicleModel ReadModel(int? id)
+        public async Task<VehicleModel> ReadModel(int? id)
         {
-            throw new NotImplementedException();
+            return await this.db.VehicleModels.FindAsync(id);
         }
 
-        public bool Update(LVL3.Model.VehicleModel vehicleModel)
+        public async Task Update(VehicleModel vehicleModel)
         {
-            throw new NotImplementedException();
+            this.db.Entry(vehicleModel).State = EntityState.Modified;
+            await this.db.SaveChangesAsync();
         }
 
-        public bool Update(LVL3.Model.VehicleMake vehicleMake)
+        public async Task Update(VehicleMake vehicleMake)
         {
-            throw new NotImplementedException();
+            this.db.Entry(vehicleMake).State = EntityState.Modified;
+            await this.db.SaveChangesAsync();
         }
+
     }
 }
