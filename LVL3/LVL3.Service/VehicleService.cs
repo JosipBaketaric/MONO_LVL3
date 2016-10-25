@@ -9,6 +9,9 @@ using LVL3.DAL;
 using LVL3.Model;
 using System.Data.Entity;
 using LVL3.Repository;
+using LVL3.Common.ViewModels;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace LVL3.Service
 {
@@ -30,14 +33,14 @@ namespace LVL3.Service
             return instance;
         }
         
-        public void Create(VehicleModel vehicleModel)
+        public void Create(VehicleModelViewModel vehicleModelViewModel)
         {
-            this.unitOfWork.models.Add(vehicleModel);
+            this.unitOfWork.models.Add( Mapper.Map<VehicleModel>(vehicleModelViewModel) );
         }
 
-        public void Create(VehicleMake vehicleMake)
+        public void Create(VehicleMakeViewModel vehicleMakeViewModel)
         {
-            this.unitOfWork.makes.Add(vehicleMake);
+            this.unitOfWork.makes.Add( Mapper.Map<VehicleMake>(vehicleMakeViewModel) );
         }
 
         public async void DeleteMake(int id)
@@ -50,32 +53,44 @@ namespace LVL3.Service
             this.unitOfWork.models.Remove( await this.unitOfWork.models.Get(id) );
         }
 
-        public async Task<IEnumerable<VehicleMake>> ReadAllMakes()
+        public async Task<IEnumerable<VehicleMakeViewModel >> ReadAllMakes()
         {
-            return await this.unitOfWork.makes.GetAll();
+            IEnumerable vehicleMakeList = await this.unitOfWork.makes.GetAll();
+            IQueryable vehicleMakelListQueryable = vehicleMakeList.AsQueryable();
+
+            IEnumerable<VehicleMakeViewModel> vehicleMakeViewModelReturnList = await vehicleMakelListQueryable.ProjectTo<VehicleMakeViewModel>().ToListAsync();
+
+            return vehicleMakeViewModelReturnList;
         }
 
-        public async Task <IEnumerable<VehicleModel> > ReadAllModels()
+        public async Task <IEnumerable<VehicleModelViewModel> > ReadAllModels()
         {
-            return await this.unitOfWork.models.GetAll();
+            IEnumerable vehicleModelList = await this.unitOfWork.models.GetAll();
+            IQueryable vehicleModelListQueryable = vehicleModelList.AsQueryable();
+
+            IEnumerable<VehicleModelViewModel> vehicleModelViewModelReturnList = await vehicleModelListQueryable.ProjectTo<VehicleModelViewModel>().ToListAsync();
+
+            return vehicleModelViewModelReturnList;
         }
 
-        public async Task< VehicleMake > ReadMake(int id)
+        public async Task< VehicleMakeViewModel > ReadMake(int id)
         {
-            return await this.unitOfWork.makes.Get(id);
+            VehicleMake vehicleMake = await this.unitOfWork.makes.Get(id);
+            return Mapper.Map<VehicleMakeViewModel>(vehicleMake);
         }
 
-        public async Task< VehicleModel > ReadModel(int id)
+        public async Task< VehicleModelViewModel > ReadModel(int id)
         {
-            return await this.unitOfWork.models.Get(id);
+            VehicleModel vehicleModel = await this.unitOfWork.models.Get(id);
+            return Mapper.Map<VehicleModelViewModel>(vehicleModel);
         }
 
-        public void Update(VehicleMake vehicleMake)
+        public void Update(VehicleMakeViewModel vehicleMakeViewModel)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(VehicleModel vehicleModel)
+        public void Update(VehicleModelViewModel vehicleModelViewModel)
         {
             throw new NotImplementedException();
         }

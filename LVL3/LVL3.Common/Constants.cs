@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LVL3.Model
+namespace LVL3.Common
 {
-    class VehicleModelViewModel
+    public static class Constants
     {
+        public static int PAGE_SIZE = 4;
     }
 }

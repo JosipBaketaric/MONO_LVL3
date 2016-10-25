@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using LVL3.Service;
 using LVL3.Model;
 using System.Threading.Tasks;
+using LVL3.Common.ViewModels;
 
 namespace LVL3.MVC_test.Controllers
 {
@@ -19,7 +20,7 @@ namespace LVL3.MVC_test.Controllers
         }
         public async Task<ActionResult> Index()
         {
-            IEnumerable<VehicleMake> makes = await service.ReadAllMakes();
+            IEnumerable<VehicleMakeViewModel> makes = await service.ReadAllMakes();
             return View(makes);
         }
 

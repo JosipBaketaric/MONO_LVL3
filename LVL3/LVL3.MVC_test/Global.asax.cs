@@ -1,4 +1,5 @@
 ﻿using LVL3.DAL;
+using LVL3.MVC_test.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,6 +16,7 @@ namespace LVL3.MVC_test
         protected void Application_Start()
         {
             Database.SetInitializer<VehicleContext>(new VehicleInitializer());
+            MappingConfig.RegisterMaps();
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
