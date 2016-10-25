@@ -1,0 +1,17 @@
+﻿@model IEnumerable<LVL3.Model.VehicleMake>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<table class="table">
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.VehicleMakeId</td>
+            <td>@item.Name</td>
+            <td>@item.Abrv</td>
+        </tr>
+    }
+
+</table>

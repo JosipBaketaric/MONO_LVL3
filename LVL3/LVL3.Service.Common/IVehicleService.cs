@@ -10,18 +10,16 @@ namespace LVL3.Service.Common
 {
     public interface IVehicleService
     {
-        Task Create(VehicleMake vehicleMake);
-        Task Create(VehicleModel vehicleModel);
-        Task DeleteMake(int? id);
-        Task DeleteModel(int? id);
-        Task<VehicleMake> FindMakeById(int? id);
-        Task<VehicleModel> FindModelById(int? id);
-        Task<IEnumerable> ReadAllMakes();
-        Task<IEnumerable> ReadAllModels();
-        Task<VehicleMake> ReadMake(int? id);
-        Task<VehicleModel> ReadModel(int? id);
-        Task Update(VehicleModel vehicleModel);
-        Task Update(VehicleMake vehicleMake);
+        void Create(VehicleMake vehicleMake);
+        void Create(VehicleModel vehicleModel);
+        void DeleteMake(int id);
+        void DeleteModel(int id);
+        Task<IEnumerable<VehicleMake>> ReadAllMakes();
+        Task<IEnumerable<VehicleModel>> ReadAllModels();
+        Task<VehicleMake> ReadMake(int id);
+        Task<VehicleModel> ReadModel(int id);
+        void Update(VehicleModel vehicleModel);
+        void Update(VehicleMake vehicleMake);
     }
 
 }

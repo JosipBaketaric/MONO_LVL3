@@ -8,91 +8,76 @@ using LVL3.Service.Common;
 using LVL3.DAL;
 using LVL3.Model;
 using System.Data.Entity;
+using LVL3.Repository;
 
 namespace LVL3.Service
 {
     public class VehicleService : IVehicleService
     {
+        private UnitOfWork unitOfWork;
         private static VehicleService instance = null;
-        private VehicleContext db;
+
         private VehicleService()
         {
-            this.db = new VehicleContext();
+            this.unitOfWork = UnitOfWork.getInstance();
         }
-        public VehicleService GetInstance()
+
+        public static VehicleService getInstance()
         {
             if (instance != null)
                 return instance;
             instance = new VehicleService();
             return instance;
         }
-        public async Task Create(VehicleMake vehicleMake)
+        
+        public void Create(VehicleModel vehicleModel)
         {
-            this.db.VehicleMakes.Add(vehicleMake);
-            await db.SaveChangesAsync();           
+            this.unitOfWork.models.Add(vehicleModel);
         }
 
-        public async Task Create(VehicleModel vehicleModel)
+        public void Create(VehicleMake vehicleMake)
         {
-            this.db.VehicleModels.Add(vehicleModel);
-            await db.SaveChangesAsync();
+            this.unitOfWork.makes.Add(vehicleMake);
         }
 
-        public async Task DeleteMake(int? id)
+        public async void DeleteMake(int id)
         {
-            this.db.VehicleMakes.Remove(await db.VehicleMakes.FindAsync(id) );
+            this.unitOfWork.makes.Remove( await this.unitOfWork.makes.Get(id) );
         }
 
-        public async Task DeleteModel(int? id)
+        public async void DeleteModel(int id)
         {
-            this.db.VehicleModels.Remove(await db.VehicleModels.FindAsync(id) );
+            this.unitOfWork.models.Remove( await this.unitOfWork.models.Get(id) );
         }
 
-        public async Task<VehicleMake> FindMakeById(int? id)
+        public async Task<IEnumerable<VehicleMake>> ReadAllMakes()
         {
-            VehicleMake vehicleMake = await this.db.VehicleMakes.FindAsync(id);
-            return vehicleMake;
+            return await this.unitOfWork.makes.GetAll();
         }
 
-        public async Task<VehicleModel> FindModelById(int? id)
+        public async Task <IEnumerable<VehicleModel> > ReadAllModels()
         {
-            VehicleModel vehicleModel = await this.db.VehicleModels.FindAsync(id);
-            return vehicleModel;
+            return await this.unitOfWork.models.GetAll();
         }
 
-        public async Task<IEnumerable> ReadAllMakes()
+        public async Task< VehicleMake > ReadMake(int id)
         {
-            IEnumerable<VehicleMake> makesList = await this.db.VehicleMakes.ToListAsync();
-            return makesList;
+            return await this.unitOfWork.makes.Get(id);
         }
 
-        public async Task<IEnumerable> ReadAllModels()
+        public async Task< VehicleModel > ReadModel(int id)
         {
-            IEnumerable<VehicleModel> modelsList = await this.db.VehicleModels.ToListAsync();
-            return modelsList;
+            return await this.unitOfWork.models.Get(id);
         }
 
-        public async Task<VehicleMake> ReadMake(int? id)
+        public void Update(VehicleMake vehicleMake)
         {
-            return await this.db.VehicleMakes.FindAsync(id);
+            throw new NotImplementedException();
         }
 
-        public async Task<VehicleModel> ReadModel(int? id)
+        public void Update(VehicleModel vehicleModel)
         {
-            return await this.db.VehicleModels.FindAsync(id);
+            throw new NotImplementedException();
         }
-
-        public async Task Update(VehicleModel vehicleModel)
-        {
-            this.db.Entry(vehicleModel).State = EntityState.Modified;
-            await this.db.SaveChangesAsync();
-        }
-
-        public async Task Update(VehicleMake vehicleMake)
-        {
-            this.db.Entry(vehicleMake).State = EntityState.Modified;
-            await this.db.SaveChangesAsync();
-        }
-
     }
 }
