@@ -12,6 +12,7 @@ using LVL3.Repository;
 using LVL3.Common.ViewModels;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
+using System.Data.Entity.Infrastructure;
 
 namespace LVL3.Service
 {
@@ -55,22 +56,14 @@ namespace LVL3.Service
 
         public async Task<IEnumerable<VehicleMakeViewModel >> ReadAllMakes()
         {
-            IEnumerable vehicleMakeList = await this.unitOfWork.makes.GetAll();
-            IQueryable vehicleMakelListQueryable = vehicleMakeList.AsQueryable();
-
-            IEnumerable<VehicleMakeViewModel> vehicleMakeViewModelReturnList = await vehicleMakelListQueryable.ProjectTo<VehicleMakeViewModel>().ToListAsync();
-
-            return vehicleMakeViewModelReturnList;
+            var vehicleMakeList = await this.unitOfWork.makes.GetAll();
+            return Mapper.Map<IEnumerable<VehicleMakeViewModel>>(vehicleMakeList);
         }
 
         public async Task <IEnumerable<VehicleModelViewModel> > ReadAllModels()
         {
-            IEnumerable vehicleModelList = await this.unitOfWork.models.GetAll();
-            IQueryable vehicleModelListQueryable = vehicleModelList.AsQueryable();
-
-            IEnumerable<VehicleModelViewModel> vehicleModelViewModelReturnList = await vehicleModelListQueryable.ProjectTo<VehicleModelViewModel>().ToListAsync();
-
-            return vehicleModelViewModelReturnList;
+            var vehicleModelList = await this.unitOfWork.models.GetAll();
+            return Mapper.Map<IEnumerable<VehicleModelViewModel>>(vehicleModelList);
         }
 
         public async Task< VehicleMakeViewModel > ReadMake(int id)

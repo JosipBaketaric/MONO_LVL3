@@ -15,21 +15,10 @@ namespace LVL3.MVC_test.App_Start
         {
             Mapper.Initialize(config => 
             {
-                config.CreateMap<VehicleMake, VehicleMakeViewModel>()
-                .ForMember(dest => dest.VehicleMakeId, opt => opt.MapFrom(src => src.VehicleMakeId))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Abrv, opt => opt.MapFrom(src => src.Abrv));
-
-                config.CreateMap<VehicleMakeViewModel, VehicleMake>();
+                config.CreateMap<VehicleMake, VehicleMakeViewModel>().ReverseMap();
 
                 config.CreateMap<VehicleModel, VehicleModelViewModel>()
-                .ForMember(dest => dest.VehicleModelId, opt => opt.MapFrom(src => src.VehicleModelId))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Abrv, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.VehicleMakeName, opt => opt.MapFrom(src => src.VehicleMake.Name));
-
-                config.CreateMap<VehicleModelViewModel, VehicleModel>();
-
+                .ForMember(dest => dest.VehicleMakeName, opt => opt.MapFrom(src => src.VehicleMake.Name)).ReverseMap();
             });
         }
 
