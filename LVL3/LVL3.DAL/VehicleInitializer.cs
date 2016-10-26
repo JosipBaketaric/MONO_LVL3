@@ -15,12 +15,8 @@ namespace LVL3.DAL
             var vehicleMakeList = new List<VehicleMake>
             {
                 new VehicleMake {Name = "Audi", Abrv = "-" },
-                new VehicleMake {Name = "Ferrari", Abrv = "-" }
-            };
-
-            var VehicleModelList = new List<VehicleModel>
-            {
-                new VehicleModel {Name = "A4", VehicleMakeId = 1, Abrv = "-" }
+                new VehicleMake {Name = "Ferrari", Abrv = "-" },
+                new VehicleMake {Name = "Test", Abrv = "-" }
             };
 
             foreach (var make in vehicleMakeList)
@@ -28,10 +24,14 @@ namespace LVL3.DAL
                 context.VehicleMakes.Add(make);
             }
 
-            foreach(var model in VehicleModelList)
-            {
-                context.VehicleModels.Add(model);
-            }
+            //var VehicleModelList = new List<VehicleModel>
+            //{
+            //    new VehicleModel {Name = "A4", VehicleMakeId = 1, Abrv = "-" }
+            //};          
+            //foreach(var model in VehicleModelList)
+            //{
+            //    context.VehicleModels.Add(model);
+            //}
 
             context.SaveChanges();
             base.Seed(context);

@@ -21,6 +21,13 @@ namespace LVL3.Repository
             get { return context as VehicleContext; }
         }
 
+        public async Task<VehicleModel> Get(Guid id)
+        {
+            return await this.context.Set<VehicleModel>().FindAsync(id);
+        }
+
+        //FILERING AND SEARCHING HERE
+
     }
 
 

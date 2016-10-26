@@ -9,7 +9,7 @@ namespace LVL3.Repository.Common
 {
     public interface IMakeRepository : IRepository<VehicleMake>
     {
-
+        Task<VehicleMake> Get(Guid id);
     }
 
 }

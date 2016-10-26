@@ -16,15 +16,15 @@ namespace LVL3.Repository
     {
         protected readonly DbContext context;
 
+        public void Edit(TEntity entity)
+        {
+            this.context.Entry(entity).State = EntityState.Modified;
+        }
+
         public Repository(DbContext context)
         {
             this.context = context;
-        }
-
-        public async Task<TEntity> Get(int id)
-        {
-            return await this.context.Set<TEntity>().FindAsync(id);
-        }
+        }       
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {
@@ -50,6 +50,18 @@ namespace LVL3.Repository
         {
             return await this.context.Set<TEntity>().SingleOrDefaultAsync(predicate);
         }
+
+
+        public async Task<int> Complete()
+        {
+            return await context.SaveChangesAsync();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
+        }
+
     }
 
 }

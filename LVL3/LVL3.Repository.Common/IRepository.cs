@@ -10,7 +10,7 @@ namespace LVL3.Repository.Common
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> Get(int id);
+        void Edit(TEntity entity);
         Task<IEnumerable<TEntity>> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> SingleOrDefault(Expression<Func<TEntity, bool>> predicate);

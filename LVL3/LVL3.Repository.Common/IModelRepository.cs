@@ -9,6 +9,7 @@ namespace LVL3.Repository.Common
 {
     public interface IModelRepository : IRepository<VehicleModel>
     {
+        Task<VehicleModel> Get(Guid id);
     }
 
 
