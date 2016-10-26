@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace LVL3.Common
 {
-    public static class Constants
+    public enum RepositoryType
     {
-        public static int PAGE_SIZE = 4;
+        Make,
+        Model
     }
 }

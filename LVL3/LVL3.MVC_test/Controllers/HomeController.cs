@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using LVL3.Service;
 using LVL3.Model;
 using System.Threading.Tasks;
 using LVL3.Common.ViewModels;
+using LVL3.Service;
 
 namespace LVL3.MVC_test.Controllers
 {
     public class HomeController : Controller
     {
-        private VehicleService service;
-
+       
+        protected VehicleService Service;
         public HomeController()
         {
-            service = VehicleService.getInstance();
+            Service = VehicleService.GetService();
         }
         public async Task<ActionResult> Index()
         {
-            IEnumerable<VehicleMakeViewModel> makes = await service.ReadAllMakes();
-            return View(makes);
+            
+            return View( await Service.ReadAllMakes() );
         }
 
         public ActionResult About()

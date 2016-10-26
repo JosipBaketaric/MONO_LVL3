@@ -1,15 +1,21 @@
-﻿using System;
+﻿using LVL3.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using LVL3.Model;
 
 namespace LVL3.Repository.Common
 {
-    public interface IMakeRepository : IRepository<VehicleMake>
+    public interface IMakeRepository
     {
+        Task<IEnumerable<VehicleMake>> GetAll();
+        IEnumerable<VehicleMake> Find(Expression<Func<VehicleMake, bool>> predicate);
+        void Add(VehicleMake entity);
+        void Remove(VehicleMake entity);
+        Task<VehicleMake> SingleOrDefault(Expression<Func<VehicleMake, bool>> predicate);
         Task<VehicleMake> Get(Guid id);
+        void Edit(VehicleMake entity);
     }
-
 }

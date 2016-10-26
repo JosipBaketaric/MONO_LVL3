@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1278A5C-D790-4176-A9E3-B112EFFF4805}</ProjectGuid>
+    <ProjectGuid>{5965D45F-B366-4FD6-913F-014D3287C88B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LVL3.Service.Common</RootNamespace>
@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,19 +42,6 @@
   <ItemGroup>
     <Compile Include="IVehicleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LVL3.Common\LVL3.Common.csproj">
-      <Project>{3e421644-f6b5-4350-b54b-94eb84c690f5}</Project>
-      <Name>LVL3.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LVL3.Model\LVL3.Model.csproj">
-      <Project>{3e2e7f12-fa62-4471-9783-20f79146f7d2}</Project>
-      <Name>LVL3.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

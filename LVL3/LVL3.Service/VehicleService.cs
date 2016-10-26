@@ -1,91 +1,81 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LVL3.Service.Common;
-using LVL3.DAL;
-using LVL3.Model;
-using System.Data.Entity;
-using LVL3.Repository;
+﻿using AutoMapper;
+using LVL3.Common;
 using LVL3.Common.ViewModels;
-using AutoMapper.QueryableExtensions;
-using AutoMapper;
-using System.Data.Entity.Infrastructure;
+using LVL3.Model;
+using LVL3.Repository;
+using LVL3.Repository.Repositorys;
+using LVL3.Service.Common;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LVL3.Service
 {
     public class VehicleService : IVehicleService
     {
-        private UnitOfWork unitOfWork;
         private static VehicleService instance = null;
-
+        private MakeRepository MakeService;
+        private ModelRepository ModelService;
         private VehicleService()
         {
-            this.unitOfWork = UnitOfWork.getInstance();
+            this.MakeService = (MakeRepository)RepositoryFactory.CreateRepository(RepositoryType.Make);
+            this.ModelService = (ModelRepository)RepositoryFactory.CreateRepository(RepositoryType.Model);
         }
-
-        public static VehicleService getInstance()
+        public static VehicleService GetService()
         {
             if (instance != null)
                 return instance;
             instance = new VehicleService();
             return instance;
         }
-        
-        public void Create(VehicleModelViewModel vehicleModelViewModel)
+        //Get All
+        public async Task<IEnumerable<VehicleMakeViewModel>> ReadAllMakes()
         {
-            this.unitOfWork.models.Add( Mapper.Map<VehicleModel>(vehicleModelViewModel) );
+            var MakeList = await MakeService.GetAll();
+            return Mapper.Map<IEnumerable<VehicleMakeViewModel>>(MakeList);
+        }
+        public async Task<IEnumerable<VehicleModelViewModel>> ReadAllModels()
+        {
+            var ModelList = await ModelService.GetAll();
+            return Mapper.Map<IEnumerable<VehicleModelViewModel>>(ModelList);
+        }
+        //Create New
+        public void Create(VehicleMakeViewModel make)
+        {            
+            MakeService.Add(Mapper.Map<VehicleMake>(make));
+        }
+        public void Create(VehicleModelViewModel model)
+        {           
+            ModelService.Add(Mapper.Map<VehicleModel>(model));
+        }
+        //Delete
+        public async void DeleteMake(Guid id)
+        {
+            MakeService.Remove( await MakeService.Get(id) );           
+        }
+        public async void DeleteModel(Guid id)
+        {
+            ModelService.Remove( await ModelService.Get(id) );
+        }
+        //Get One
+        public async Task<VehicleMakeViewModel> ReadMake(Guid id)
+        {
+            return Mapper.Map<VehicleMakeViewModel>(await MakeService.Get(id));
+        }
+        public async Task<VehicleModelViewModel> ReadModel(Guid id)
+        {
+            return Mapper.Map<VehicleModelViewModel>(await ModelService.Get(id));
+        }
+        //Update
+        public void Update(VehicleMakeViewModel make)
+        {
+            MakeService.Edit( Mapper.Map<VehicleMake>(make) );
+        }
+        public void Update(VehicleModelViewModel model)
+        {
+            ModelService.Edit( Mapper.Map<VehicleModel>(model) );
         }
 
-        public void Create(VehicleMakeViewModel vehicleMakeViewModel)
-        {
-            this.unitOfWork.makes.Add( Mapper.Map<VehicleMake>(vehicleMakeViewModel) );
-        }
-
-        public async void DeleteMake(int id)
-        {
-            this.unitOfWork.makes.Remove( await this.unitOfWork.makes.Get(id) );
-        }
-
-        public async void DeleteModel(int id)
-        {
-            this.unitOfWork.models.Remove( await this.unitOfWork.models.Get(id) );
-        }
-
-        public async Task<IEnumerable<VehicleMakeViewModel >> ReadAllMakes()
-        {
-            var vehicleMakeList = await this.unitOfWork.makes.GetAll();
-            return Mapper.Map<IEnumerable<VehicleMakeViewModel>>(vehicleMakeList);
-        }
-
-        public async Task <IEnumerable<VehicleModelViewModel> > ReadAllModels()
-        {
-            var vehicleModelList = await this.unitOfWork.models.GetAll();
-            return Mapper.Map<IEnumerable<VehicleModelViewModel>>(vehicleModelList);
-        }
-
-        public async Task< VehicleMakeViewModel > ReadMake(int id)
-        {
-            VehicleMake vehicleMake = await this.unitOfWork.makes.Get(id);
-            return Mapper.Map<VehicleMakeViewModel>(vehicleMake);
-        }
-
-        public async Task< VehicleModelViewModel > ReadModel(int id)
-        {
-            VehicleModel vehicleModel = await this.unitOfWork.models.Get(id);
-            return Mapper.Map<VehicleModelViewModel>(vehicleModel);
-        }
-
-        public void Update(VehicleMakeViewModel vehicleMakeViewModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(VehicleModelViewModel vehicleModelViewModel)
-        {
-            throw new NotImplementedException();
-        }
     }
+
 }

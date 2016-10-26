@@ -16,9 +16,7 @@ namespace LVL3.MVC_test.App_Start
             Mapper.Initialize(config => 
             {
                 config.CreateMap<VehicleMake, VehicleMakeViewModel>().ReverseMap();
-
-                config.CreateMap<VehicleModel, VehicleModelViewModel>()
-                .ForMember(dest => dest.VehicleMakeName, opt => opt.MapFrom(src => src.VehicleMake.Name)).ReverseMap();
+                config.CreateMap<VehicleModel, VehicleModelViewModel>().ReverseMap();
             });
         }
 

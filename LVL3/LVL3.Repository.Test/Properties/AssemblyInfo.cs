@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LVL3.Repository.Tests")]
+[assembly: AssemblyTitle("LVL3.Repository.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LVL3.Repository.Tests")]
+[assembly: AssemblyProduct("LVL3.Repository.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1e2c2411-0723-4e07-9fe0-d2d391b1ea0c")]
+[assembly: Guid("0ea4700a-f478-4110-b569-1740ed713453")]
 
 // Version information for an assembly consists of the following four values:
 //

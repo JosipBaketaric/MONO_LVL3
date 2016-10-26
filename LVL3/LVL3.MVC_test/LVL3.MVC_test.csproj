@@ -245,7 +245,7 @@
       <Name>LVL3.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\LVL3.Service\LVL3.Service.csproj">
-      <Project>{bb1187c6-58a9-4588-88e2-decbf4e4f6e7}</Project>
+      <Project>{27971e7d-bc6e-450e-93be-d7a123abce66}</Project>
       <Name>LVL3.Service</Name>
     </ProjectReference>
   </ItemGroup>
