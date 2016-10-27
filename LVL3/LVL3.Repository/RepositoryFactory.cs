@@ -6,24 +6,29 @@ using LVL3.Repository.Common;
 
 namespace LVL3.Repository
 {
-    public static class RepositoryFactory
+    public class RepositoryFactory : IRepositoryFactory
     {
-        public static IRepository CreateRepository(RepositoryType type)
+        private IRepository resource;
+        public RepositoryFactory(RepositoryType type)
         {
-            IRepository resource = null;
+            
             switch (type)
             {
                 case RepositoryType.Make:
                     resource = new MakeRepository(new VehicleContext());
-                    return resource;
-
+                    break;
                 case RepositoryType.Model:
                     resource = new ModelRepository(new VehicleContext());
-                    return resource;
-
+                    break;
                 default:
-                    return resource;                
+                    resource = null;
+                    break;               
             }
+        }
+
+        public IRepository GetRepository()
+        {
+            return this.resource;
         }
 
     }

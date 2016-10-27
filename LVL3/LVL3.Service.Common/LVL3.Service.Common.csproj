@@ -43,6 +43,12 @@
     <Compile Include="IVehicleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LVL3.Common\LVL3.Common.csproj">
+      <Project>{3e421644-f6b5-4350-b54b-94eb84c690f5}</Project>
+      <Name>LVL3.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

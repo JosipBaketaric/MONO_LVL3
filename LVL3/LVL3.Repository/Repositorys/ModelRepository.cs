@@ -7,6 +7,7 @@ using LVL3.Model;
 using System.Data.Entity;
 using System.Linq.Expressions;
 using LVL3.Repository.Common;
+using LVL3.Model.Common;
 
 namespace LVL3.Repository.Repositorys
 {

@@ -3,6 +3,7 @@ using LVL3.Common;
 using LVL3.Common.ViewModels;
 using LVL3.Model;
 using LVL3.Repository;
+using LVL3.Repository.Common;
 using LVL3.Repository.Repositorys;
 using LVL3.Service.Common;
 using System;
@@ -13,21 +14,21 @@ namespace LVL3.Service
 {
     public class VehicleService : IVehicleService
     {
-        private static VehicleService instance = null;
         private MakeRepository MakeService;
         private ModelRepository ModelService;
-        private VehicleService()
+
+        private IRepository WorkingRepository;
+
+        public VehicleService(IRepository workingRepository)
         {
-            this.MakeService = (MakeRepository)RepositoryFactory.CreateRepository(RepositoryType.Make);
-            this.ModelService = (ModelRepository)RepositoryFactory.CreateRepository(RepositoryType.Model);
+            this.WorkingRepository = workingRepository;
         }
-        public static VehicleService GetService()
+        public  VehicleService()
         {
-            if (instance != null)
-                return instance;
-            instance = new VehicleService();
-            return instance;
+            this.MakeService =(MakeRepository) new RepositoryFactory(RepositoryType.Make).GetRepository();
+            this.ModelService = (ModelRepository)new RepositoryFactory(RepositoryType.Model).GetRepository();
         }
+
         //Get All
         public async Task<IEnumerable<VehicleMakeViewModel>> ReadAllMakes()
         {
@@ -40,22 +41,26 @@ namespace LVL3.Service
             return Mapper.Map<IEnumerable<VehicleModelViewModel>>(ModelList);
         }
         //Create New
-        public void Create(VehicleMakeViewModel make)
-        {            
+        public async void Create(VehicleMakeViewModel make)
+        {
             MakeService.Add(Mapper.Map<VehicleMake>(make));
+            int result = await MakeService.Complete();
         }
-        public void Create(VehicleModelViewModel model)
-        {           
+        public async void Create(VehicleModelViewModel model)
+        {
             ModelService.Add(Mapper.Map<VehicleModel>(model));
+            int result = await ModelService.Complete();
         }
         //Delete
         public async void DeleteMake(Guid id)
         {
-            MakeService.Remove( await MakeService.Get(id) );           
+            MakeService.Remove( await MakeService.Get(id) );
+            int result = await MakeService.Complete();
         }
         public async void DeleteModel(Guid id)
         {
             ModelService.Remove( await ModelService.Get(id) );
+            int result = await ModelService.Complete();
         }
         //Get One
         public async Task<VehicleMakeViewModel> ReadMake(Guid id)
@@ -75,7 +80,6 @@ namespace LVL3.Service
         {
             ModelService.Edit( Mapper.Map<VehicleModel>(model) );
         }
-
     }
 
 }
