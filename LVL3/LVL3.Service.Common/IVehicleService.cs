@@ -1,10 +1,7 @@
-﻿using LVL3.Common.IViewModels;
-using LVL3.Common.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using LVL3.Model.ViewModels;
 
 namespace LVL3.Service.Common
 {

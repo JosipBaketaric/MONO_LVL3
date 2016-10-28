@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using LVL3.Common;
-using LVL3.Common.ViewModels;
 using LVL3.Model;
 using LVL3.Repository;
-using LVL3.Repository.Common;
 using LVL3.Repository.Repositorys;
 using LVL3.Service.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LVL3.Model.ViewModels;
 
 namespace LVL3.Service
 {
@@ -17,12 +16,6 @@ namespace LVL3.Service
         private MakeRepository MakeService;
         private ModelRepository ModelService;
 
-        private IRepository WorkingRepository;
-
-        public VehicleService(IRepository workingRepository)
-        {
-            this.WorkingRepository = workingRepository;
-        }
         public  VehicleService()
         {
             this.MakeService =(MakeRepository) new RepositoryFactory(RepositoryType.Make).GetRepository();
@@ -72,13 +65,15 @@ namespace LVL3.Service
             return Mapper.Map<VehicleModelViewModel>(await ModelService.Get(id));
         }
         //Update
-        public void Update(VehicleMakeViewModel make)
+        public async void Update(VehicleMakeViewModel make)
         {
             MakeService.Edit( Mapper.Map<VehicleMake>(make) );
+            int result = await MakeService.Complete();
         }
-        public void Update(VehicleModelViewModel model)
+        public async void Update(VehicleModelViewModel model)
         {
             ModelService.Edit( Mapper.Map<VehicleModel>(model) );
+            int result = await ModelService.Complete();
         }
     }
 

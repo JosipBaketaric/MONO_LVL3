@@ -48,6 +48,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatabaseModels\VehicleMake.cs" />
     <Compile Include="DatabaseModels\VehicleModel.cs" />
+    <Compile Include="ViewModels\VehicleMakeViewModel.cs" />
+    <Compile Include="ViewModels\VehicleModelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">

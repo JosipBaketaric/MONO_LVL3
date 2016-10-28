@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
-using LVL3.Common.ViewModels;
 using LVL3.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using LVL3.Model.ViewModels;
 
 namespace LVL3.MVC.App_Start
 {

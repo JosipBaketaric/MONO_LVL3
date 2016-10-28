@@ -1,6 +1,4 @@
-﻿using LVL3.Common.ViewModels;
-using LVL3.Service.Common;
-using System.Collections.Generic;
+﻿using LVL3.Service.Common;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 

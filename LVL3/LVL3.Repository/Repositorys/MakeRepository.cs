@@ -22,17 +22,17 @@ namespace LVL3.Repository.Repositorys
             this.context.Entry(entity).State = EntityState.Modified;
         }
 
-        public async Task<VehicleMake> Get(Guid id)
+        public async Task<IVehicleMake> Get(Guid id)
         {
             return await this.context.Set<VehicleMake>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<VehicleMake>> GetAll()
+        public async Task<IEnumerable<IVehicleMake>> GetAll()
         {
             return await this.context.Set<VehicleMake>().ToListAsync();
         }
 
-        public IEnumerable<VehicleMake> Find(Expression<Func<VehicleMake, bool>> predicate)
+        public IEnumerable<IVehicleMake> Find(Expression<Func<VehicleMake, bool>> predicate)
         {
             return this.context.Set<VehicleMake>().Where(predicate);
         }
@@ -42,12 +42,12 @@ namespace LVL3.Repository.Repositorys
             this.context.Set<VehicleMake>().Add(entity);
         }
 
-        public void Remove(VehicleMake entity)
+        public void Remove(IVehicleMake entity)
         {
-            this.context.Set<VehicleMake>().Remove(entity);
+            this.context.Set<VehicleMake>().Remove( (VehicleMake)entity );
         }
 
-        public async Task<VehicleMake> SingleOrDefault(Expression<Func<VehicleMake, bool>> predicate)
+        public async Task<IVehicleMake> SingleOrDefault(Expression<Func<VehicleMake, bool>> predicate)
         {
             return await this.context.Set<VehicleMake>().SingleOrDefaultAsync(predicate);
         }

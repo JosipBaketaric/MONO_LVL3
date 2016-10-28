@@ -1,7 +1,10 @@
-﻿using LVL3.Model;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace LVL3.Common.IViewModels
+namespace LVL3.Model.Common
 {
     public interface IVehicleModelViewModel
     {
@@ -9,6 +12,5 @@ namespace LVL3.Common.IViewModels
         Guid VehicleMakeId { get; set; }
         string Name { get; set; }
         string Abrv { get; set; }
-        VehicleMake VehicleMake { get; set; }
     }
 }

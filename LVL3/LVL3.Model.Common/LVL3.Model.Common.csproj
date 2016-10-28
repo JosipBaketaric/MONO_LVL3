@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IVehicleMake.cs" />
+    <Compile Include="IVehicleMakeViewModel.cs" />
     <Compile Include="IVehicleModel.cs" />
+    <Compile Include="IVehicleModelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

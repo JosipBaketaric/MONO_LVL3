@@ -11,12 +11,12 @@ namespace LVL3.Repository.Common
 { 
     public interface IModelRepository
     {
-        Task<IEnumerable<VehicleModel>> GetAll();
-        IEnumerable<VehicleModel> Find(Expression<Func<VehicleModel, bool>> predicate);
+        Task<IEnumerable<IVehicleModel>> GetAll();
+        IEnumerable<IVehicleModel> Find(Expression<Func<VehicleModel, bool>> predicate);
         void Add(VehicleModel entity);
-        void Remove(VehicleModel entity);
-        Task<VehicleModel> SingleOrDefault(Expression<Func<VehicleModel, bool>> predicate);
-        Task<VehicleModel> Get(Guid id);
+        void Remove(IVehicleModel entity);
+        Task<IVehicleModel> SingleOrDefault(Expression<Func<VehicleModel, bool>> predicate);
+        Task<IVehicleModel> Get(Guid id);
         void Edit(VehicleModel entity);
     }
 }

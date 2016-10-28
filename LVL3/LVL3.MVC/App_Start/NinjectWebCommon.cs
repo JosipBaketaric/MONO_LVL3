@@ -10,11 +10,11 @@ namespace LVL3.MVC.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using Common.IViewModels;
-    using Common.ViewModels;
+    using LVL3.Model.Common;
     using System.Collections.Generic;
     using Service;
     using Service.Common;
+    using Model.ViewModels;
 
     public static class NinjectWebCommon 
     {

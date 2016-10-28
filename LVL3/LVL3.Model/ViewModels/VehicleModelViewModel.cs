@@ -1,8 +1,8 @@
-﻿using LVL3.Common.IViewModels;
-using LVL3.Model;
+﻿using LVL3.Model;
+using LVL3.Model.Common;
 using System;
 
-namespace LVL3.Common.ViewModels
+namespace LVL3.Model.ViewModels
 {
     public class VehicleModelViewModel : IVehicleModelViewModel
     {

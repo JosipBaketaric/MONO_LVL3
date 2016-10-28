@@ -1,9 +1,8 @@
-﻿using LVL3.Common.IViewModels;
-using LVL3.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using LVL3.Model.Common;
 
-namespace LVL3.Common.ViewModels
+namespace LVL3.Model.ViewModels
 {
     public class VehicleMakeViewModel : IVehicleMakeViewModel
     {

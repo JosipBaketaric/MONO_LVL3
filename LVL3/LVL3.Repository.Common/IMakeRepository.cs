@@ -11,12 +11,12 @@ namespace LVL3.Repository.Common
 {
     public interface IMakeRepository
     {
-        Task<IEnumerable<VehicleMake>> GetAll();
-        IEnumerable<VehicleMake> Find(Expression<Func<VehicleMake, bool>> predicate);
+        Task<IEnumerable<IVehicleMake>> GetAll();
+        IEnumerable<IVehicleMake> Find(Expression<Func<VehicleMake, bool>> predicate);
         void Add(VehicleMake entity);
-        void Remove(VehicleMake entity);
-        Task<VehicleMake> SingleOrDefault(Expression<Func<VehicleMake, bool>> predicate);
-        Task<VehicleMake> Get(Guid id);
+        void Remove(IVehicleMake entity);
+        Task<IVehicleMake> SingleOrDefault(Expression<Func<VehicleMake, bool>> predicate);
+        Task<IVehicleMake> Get(Guid id);
         void Edit(VehicleMake entity);
     }
 }

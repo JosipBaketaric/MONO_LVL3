@@ -22,17 +22,17 @@ namespace LVL3.Repository.Repositorys
             this.context.Entry(entity).State = EntityState.Modified;
         }
 
-        public async Task<VehicleModel> Get(Guid id)
+        public async Task<IVehicleModel> Get(Guid id)
         {
             return await this.context.Set<VehicleModel>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<VehicleModel>> GetAll()
+        public async Task<IEnumerable<IVehicleModel>> GetAll()
         {
             return await this.context.Set<VehicleModel>().ToListAsync();
         }
 
-        public IEnumerable<VehicleModel> Find(Expression<Func<VehicleModel, bool>> predicate)
+        public IEnumerable<IVehicleModel> Find(Expression<Func<VehicleModel, bool>> predicate)
         {
             return this.context.Set<VehicleModel>().Where(predicate);
         }
@@ -42,12 +42,12 @@ namespace LVL3.Repository.Repositorys
             this.context.Set<VehicleModel>().Add(entity);
         }
 
-        public void Remove(VehicleModel entity)
+        public void Remove(IVehicleModel entity)
         {
-            this.context.Set<VehicleModel>().Remove(entity);
+            this.context.Set<VehicleModel>().Remove( (VehicleModel)entity);            
         }
 
-        public async Task<VehicleModel> SingleOrDefault(Expression<Func<VehicleModel, bool>> predicate)
+        public async Task<IVehicleModel> SingleOrDefault(Expression<Func<VehicleModel, bool>> predicate)
         {
             return await this.context.Set<VehicleModel>().SingleOrDefaultAsync(predicate);
         }
