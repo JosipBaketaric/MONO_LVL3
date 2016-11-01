@@ -9,9 +9,9 @@ namespace LVL3.Service.Common
     {
         Task<IEnumerable<IVehicleMakeView>> ReadAll();
         Task<IVehicleMakeView> Read(Guid id);
-        void Add(IVehicleMakeView entry);
-        void Update(IVehicleMakeView entry);
-        void Delete(IVehicleMakeView entry);
-        void Delete(Guid id);
+        Task<int> Add(IVehicleMakeView entry);
+        Task<int> Update(IVehicleMakeView entry);
+        Task<int> Delete(IVehicleMakeView entry);
+        Task<int> Delete(Guid id);
     }
 }

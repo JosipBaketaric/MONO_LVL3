@@ -1,12 +1,9 @@
-﻿using LVL3.Service.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using LVL3.Model.Common.IView;
+using LVL3.Service.Common;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Script.Serialization;
 
 namespace LVL3.MVCApi.Controllers
 {
@@ -14,13 +11,15 @@ namespace LVL3.MVCApi.Controllers
     public class MakeController : ApiController
     {
         protected IMakeService MakeService;
+        protected IVehicleMakeView VehicleMake;
 
-        public MakeController(IMakeService makeService)
+        public MakeController(IMakeService makeService, IVehicleMakeView vehicleMake)
         {
             this.MakeService = makeService;
+            this.VehicleMake = vehicleMake;
         }
 
-        [HttpGet, Route("getall")]
+        [Route("getall")]
         public async Task<HttpResponseMessage> GetAll()
         {
             var makes = await MakeService.ReadAll();
@@ -29,6 +28,7 @@ namespace LVL3.MVCApi.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, makes);
         }
+
 
     }
 }

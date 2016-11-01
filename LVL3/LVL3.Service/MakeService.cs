@@ -17,19 +17,19 @@ namespace LVL3.Service
             this.MakeRepository = makeRepository;
         }
 
-        public async void Add(IVehicleMakeView entry)
+        public async Task<int> Add(IVehicleMakeView entry)
         {
-            await MakeRepository.Add( AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry) );
+            return await MakeRepository.Add( AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry) );
         }
 
-        public async void Delete(Guid id)
+        public async Task<int> Delete(Guid id)
         {
-            await MakeRepository.Delete(id);
+            return await MakeRepository.Delete(id);
         }
 
-        public async void Delete(IVehicleMakeView entry)
+        public async Task<int> Delete(IVehicleMakeView entry)
         {
-            await MakeRepository.Delete(AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry));
+            return await MakeRepository.Delete(AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry));
         }
 
         public async Task<IVehicleMakeView> Read(Guid id)
@@ -42,9 +42,9 @@ namespace LVL3.Service
             return AutoMapper.Mapper.Map<IEnumerable<IVehicleMakeView>>( await MakeRepository.GetAll());
         }
 
-        public async void Update(IVehicleMakeView entry)
+        public async Task<int> Update(IVehicleMakeView entry)
         {
-            await MakeRepository.Update( AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry) );
+            return await MakeRepository.Update( AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry) );
         }
     }
 

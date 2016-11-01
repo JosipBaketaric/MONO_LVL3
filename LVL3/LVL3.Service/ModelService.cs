@@ -17,19 +17,19 @@ namespace LVL3.Service
             this.ModelRepository = modelRepository;
         }
 
-        public async void Add(IVehicleModelView entry)
+        public async Task<int> Add(IVehicleModelView entry)
         {
-            await ModelRepository.Add( AutoMapper.Mapper.Map<IVehicleModelDomain>(entry) );
+            return await ModelRepository.Add( AutoMapper.Mapper.Map<IVehicleModelDomain>(entry) );
         }
 
-        public async void Delete(Guid id)
+        public async Task<int> Delete(Guid id)
         {
-            await ModelRepository.Delete(id);
+            return await ModelRepository.Delete(id);
         }
 
-        public async void Delete(IVehicleModelView entry)
+        public async Task<int> Delete(IVehicleModelView entry)
         {
-            await ModelRepository.Delete( AutoMapper.Mapper.Map<IVehicleModelDomain>(entry) );
+            return await ModelRepository.Delete( AutoMapper.Mapper.Map<IVehicleModelDomain>(entry) );
         }
 
         public async Task<IVehicleModelView> Read(Guid id)
@@ -42,9 +42,9 @@ namespace LVL3.Service
             return AutoMapper.Mapper.Map<IEnumerable<IVehicleModelView>>(await ModelRepository.GetAll());
         }
 
-        public async void Update(IVehicleModelView entry)
+        public async Task<int> Update(IVehicleModelView entry)
         {
-            await ModelRepository.Update( AutoMapper.Mapper.Map<IVehicleModelDomain>(entry) );
+            return await ModelRepository.Update( AutoMapper.Mapper.Map<IVehicleModelDomain>(entry) );
         }
     }
 
