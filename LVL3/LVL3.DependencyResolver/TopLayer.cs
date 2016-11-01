@@ -1,0 +1,15 @@
+﻿using Ninject.Modules;
+using LVL3.Service.Common;
+using LVL3.Service;
+
+namespace LVL3.DependencyResolver
+{
+    class TopLayer : NinjectModule
+    {
+        public override void Load()
+        {
+            Bind<IMakeService>().To<MakeService>();
+            Bind<IModelService>().To<ModelService>();
+        }
+    }
+}

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3E421644-F6B5-4350-B54B-94EB84C690F5}</ProjectGuid>
+    <ProjectGuid>{3ECFFD03-44CF-447B-AC75-00D00CCAC667}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LVL3.Common</RootNamespace>
-    <AssemblyName>LVL3.Common</AssemblyName>
+    <RootNamespace>LVL3.DependencyResolver</RootNamespace>
+    <AssemblyName>LVL3.DependencyResolver</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -44,16 +44,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BottomLayer.cs" />
+    <Compile Include="MiddleLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopLayer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
+      <Project>{63a8c737-a608-4321-8795-e345be2a39a5}</Project>
+      <Name>LVL3.Model.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LVL3.Model\LVL3.Model.csproj">
       <Project>{3e2e7f12-fa62-4471-9783-20f79146f7d2}</Project>
       <Name>LVL3.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\LVL3.Repository.Common\LVL3.Repository.Common.csproj">
+      <Project>{dd6b95aa-d7e0-4c25-b59c-d1523af19a1a}</Project>
+      <Name>LVL3.Repository.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LVL3.Repository\LVL3.Repository.csproj">
+      <Project>{3a08bced-15cf-45e7-8366-820c494de017}</Project>
+      <Name>LVL3.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LVL3.Service.Common\LVL3.Service.Common.csproj">
+      <Project>{5965d45f-b366-4fd6-913f-014d3287c88b}</Project>
+      <Name>LVL3.Service.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LVL3.Service\LVL3.Service.csproj">
+      <Project>{27971e7d-bc6e-450e-93be-d7a123abce66}</Project>
+      <Name>LVL3.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
 ﻿using LVL3.Model.Common.IDomain;
+using LVL3.Model.DatabaseModels;
 using System;
 
 namespace LVL3.Model.DomainModels

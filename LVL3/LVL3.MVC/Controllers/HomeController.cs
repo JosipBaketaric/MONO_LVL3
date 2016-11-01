@@ -7,16 +7,13 @@ namespace LVL3.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IVehicleService Service;
-        public HomeController(IVehicleService service)
+
+        public HomeController()
         {
-            Service = service;
         }
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var AllMakes = await Service.ReadAllMakes();
-            ViewBag.Title = "Home Page";
-            return View(AllMakes);
+            return View();
         }
     }
 }
