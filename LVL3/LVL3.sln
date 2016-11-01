@@ -30,6 +30,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVL3.MVC.Tests", "LVL3.MVC.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVL3.DependencyResolver", "LVL3.DependencyResolver\LVL3.DependencyResolver.csproj", "{3ECFFD03-44CF-447B-AC75-00D00CCAC667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVL3.MVCApi", "LVL3.MVCApi\LVL3.MVCApi.csproj", "{ADB0FED6-0099-4274-89CD-F3CA94A90EC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVL3.MVCApi.Tests", "LVL3.MVCApi.Tests\LVL3.MVCApi.Tests.csproj", "{893850C1-6D9B-4D2F-8CD9-5385CE36C6C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +88,14 @@ Global
 		{3ECFFD03-44CF-447B-AC75-00D00CCAC667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ECFFD03-44CF-447B-AC75-00D00CCAC667}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ECFFD03-44CF-447B-AC75-00D00CCAC667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB0FED6-0099-4274-89CD-F3CA94A90EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB0FED6-0099-4274-89CD-F3CA94A90EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB0FED6-0099-4274-89CD-F3CA94A90EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB0FED6-0099-4274-89CD-F3CA94A90EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893850C1-6D9B-4D2F-8CD9-5385CE36C6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893850C1-6D9B-4D2F-8CD9-5385CE36C6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893850C1-6D9B-4D2F-8CD9-5385CE36C6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893850C1-6D9B-4D2F-8CD9-5385CE36C6C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
