@@ -315,6 +315,10 @@
       <Project>{f97d809e-73ec-42e0-be5d-35db52cf0c0c}</Project>
       <Name>LVL3.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LVL3.DependencyResolver\LVL3.DependencyResolver.csproj">
+      <Project>{3ecffd03-44cf-447b-ac75-00d00ccac667}</Project>
+      <Name>LVL3.DependencyResolver</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
       <Project>{63a8c737-a608-4321-8795-e345be2a39a5}</Project>
       <Name>LVL3.Model.Common</Name>
@@ -323,21 +327,9 @@
       <Project>{3e2e7f12-fa62-4471-9783-20f79146f7d2}</Project>
       <Name>LVL3.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LVL3.Repository.Common\LVL3.Repository.Common.csproj">
-      <Project>{dd6b95aa-d7e0-4c25-b59c-d1523af19a1a}</Project>
-      <Name>LVL3.Repository.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LVL3.Repository\LVL3.Repository.csproj">
-      <Project>{3a08bced-15cf-45e7-8366-820c494de017}</Project>
-      <Name>LVL3.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LVL3.Service.Common\LVL3.Service.Common.csproj">
       <Project>{5965d45f-b366-4fd6-913f-014d3287c88b}</Project>
       <Name>LVL3.Service.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LVL3.Service\LVL3.Service.csproj">
-      <Project>{27971e7d-bc6e-450e-93be-d7a123abce66}</Project>
-      <Name>LVL3.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -4,7 +4,7 @@ using LVL3.Service;
 
 namespace LVL3.DependencyResolver
 {
-    class TopLayer : NinjectModule
+    public class TopLayer : NinjectModule
     {
         public override void Load()
         {

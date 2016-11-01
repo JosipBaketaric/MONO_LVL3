@@ -1,4 +1,5 @@
-﻿using LVL3.Service.Common;
+﻿using LVL3.DependencyResolver;
+using LVL3.Service.Common;
 using Ninject;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -7,13 +8,16 @@ namespace LVL3.MVC.Controllers
 {
     public class HomeController : Controller
     {
-
-        public HomeController()
+        //IKernel kernel = new StandardKernel(new TopLayer());
+        IMakeService MakeService;
+        public HomeController(IMakeService makeService)
         {
+            MakeService = makeService;
         }
-        public ActionResult Index()
+        public async  Task<ActionResult> Index()
         {
-            return View();
+            
+            return View(await MakeService.ReadAll());
         }
     }
 }
