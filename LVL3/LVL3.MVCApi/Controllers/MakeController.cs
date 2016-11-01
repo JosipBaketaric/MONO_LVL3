@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace LVL3.MVCApi.Controllers
 {
@@ -23,6 +24,9 @@ namespace LVL3.MVCApi.Controllers
         public async Task<HttpResponseMessage> GetAll()
         {
             var makes = await MakeService.ReadAll();
+
+            //var json = new JavaScriptSerializer().Serialize(makes);
+
             return Request.CreateResponse(HttpStatusCode.OK, makes);
         }
 
