@@ -1,57 +1,55 @@
-﻿using LVL3.DAL;
-using LVL3.Model;
+﻿using LVL3.Repository.Common;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
-using LVL3.Repository.Common;
-using LVL3.Model.Common;
+using LVL3.Model.Common.IDomain;
+using LVL3.Model.Common.IDatabase;
+using LVL3.Model.DatabaseModels;
 
 namespace LVL3.Repository.Repositorys
 {
-    public class MakeRepository : Repository, IMakeRepository
+    public class MakeRepository : IMakeRepository
     {
-        public MakeRepository(VehicleContext context)
-            :base(context)
-        { }
+        protected IRepository Repository { get; private set; }
 
-        public void Edit(VehicleMake entity)
+        public MakeRepository(IRepository repository)
         {
-            this.context.Entry(entity).State = EntityState.Modified;
+            Repository = repository;
         }
 
-        public async Task<IVehicleMake> Get(Guid id)
+        public async Task<int> Add(IVehicleMakeDomain entity)
         {
-            return await this.context.Set<VehicleMake>().FindAsync(id);
+            return await Repository.Add<IVehicleMake>( AutoMapper.Mapper.Map<IVehicleMake>(entity) );
         }
 
-        public async Task<IEnumerable<IVehicleMake>> GetAll()
+        public async Task<int> Delete(Guid id)
         {
-            return await this.context.Set<VehicleMake>().ToListAsync();
+            var item = await Repository.Get<IVehicleMake>(id);
+
+            return await Repository.Delete<IVehicleMake>(item);
         }
 
-        public IEnumerable<IVehicleMake> Find(Expression<Func<VehicleMake, bool>> predicate)
+        public async Task<int> Delete(IVehicleMakeDomain entity)
         {
-            return this.context.Set<VehicleMake>().Where(predicate);
+            return await Repository.Delete<IVehicleMake>(AutoMapper.Mapper.Map<IVehicleMake>(entity) );
         }
 
-        public void Add(VehicleMake entity)
+        public async Task<IVehicleMakeDomain> Get(Guid id)
         {
-            this.context.Set<VehicleMake>().Add(entity);
+            return AutoMapper.Mapper.Map<IVehicleMakeDomain>( await Repository.Get<IVehicleMake>(id));
         }
 
-        public void Remove(IVehicleMake entity)
+        public async Task<IEnumerable<IVehicleMakeDomain>> GetAll()
         {
-            this.context.Set<VehicleMake>().Remove( (VehicleMake)entity );
+            return AutoMapper.Mapper.Map<IEnumerable<IVehicleMakeDomain>>( await Repository.GetAll<IVehicleMake>());
         }
 
-        public async Task<IVehicleMake> SingleOrDefault(Expression<Func<VehicleMake, bool>> predicate)
+        public async Task<int> Update(IVehicleMakeDomain entity)
         {
-            return await this.context.Set<VehicleMake>().SingleOrDefaultAsync(predicate);
+            return await Repository.Update<IVehicleMake>(AutoMapper.Mapper.Map<IVehicleMake>(entity));
         }
-
     }
 
 }

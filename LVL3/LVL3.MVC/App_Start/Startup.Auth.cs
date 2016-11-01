@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using LVL3.MVC.Providers;
 using LVL3.MVC.Models;
+using Ninject;
 
 namespace LVL3.MVC
 {
@@ -64,6 +65,8 @@ namespace LVL3.MVC
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+           
         }
     }
 }

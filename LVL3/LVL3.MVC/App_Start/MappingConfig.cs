@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LVL3.Model;
+using LVL3.Model.Common;
 using LVL3.Model.ViewModels;
 
 namespace LVL3.MVC.App_Start
@@ -10,8 +11,11 @@ namespace LVL3.MVC.App_Start
         {
             Mapper.Initialize(config =>
             {
-                config.CreateMap<VehicleMake, VehicleMakeViewModel>().ReverseMap();
-                config.CreateMap<VehicleModel, VehicleModelViewModel>().ReverseMap();
+                config.CreateMap<VehicleMake, VehicleMakeView>().ReverseMap();
+                config.CreateMap<VehicleModel, VehicleModelView>().ReverseMap();
+
+                config.CreateMap<IVehicleMake, IVehicleMakeViewModel>().ReverseMap();
+                config.CreateMap<IVehicleModel, IVehicleModelViewModel>().ReverseMap();
             });
         }
     }

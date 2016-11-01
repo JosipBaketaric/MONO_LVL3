@@ -44,15 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IVehicleMake.cs" />
-    <Compile Include="IVehicleMakeViewModel.cs" />
-    <Compile Include="IVehicleModel.cs" />
-    <Compile Include="IVehicleModelViewModel.cs" />
+    <Compile Include="IDatabase\IVehicleMake.cs" />
+    <Compile Include="IDatabase\IVehicleModel.cs" />
+    <Compile Include="IDomain\IVehicleMakeDomain.cs" />
+    <Compile Include="IDomain\IVehicleModelDomain.cs" />
+    <Compile Include="IView\IVehicleMakeView.cs" />
+    <Compile Include="IView\IVehicleModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

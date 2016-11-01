@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LVL3.Model.ViewModels;
+using LVL3.Model.Common;
+using LVL3.DAL;
 
 namespace LVL3.Service
 {
@@ -16,30 +18,34 @@ namespace LVL3.Service
         private MakeRepository MakeService;
         private ModelRepository ModelService;
 
-        public  VehicleService()
+        private VehicleContext VehicleContext;
+
+        public  VehicleService(VehicleContext vehicleContext)
         {
-            this.MakeService =(MakeRepository) new RepositoryFactory(RepositoryType.Make).GetRepository();
-            this.ModelService = (ModelRepository)new RepositoryFactory(RepositoryType.Model).GetRepository();
+            this.VehicleContext = vehicleContext;
+
+            this.MakeService =(MakeRepository) new RepositoryFactory(RepositoryType.Make, VehicleContext).GetRepository();
+            this.ModelService = (ModelRepository)new RepositoryFactory(RepositoryType.Model, VehicleContext).GetRepository();
         }
 
         //Get All
-        public async Task<IEnumerable<VehicleMakeViewModel>> ReadAllMakes()
+        public async Task<IEnumerable<VehicleMakeView>> ReadAllMakes()
         {
-            var MakeList = await MakeService.GetAll();
-            return Mapper.Map<IEnumerable<VehicleMakeViewModel>>(MakeList);
+            var makeList = await MakeService.GetAll();
+            return Mapper.Map<IEnumerable<VehicleMakeView>>(makeList);
         }
-        public async Task<IEnumerable<VehicleModelViewModel>> ReadAllModels()
+        public async Task<IEnumerable<VehicleModelView>> ReadAllModels()
         {
             var ModelList = await ModelService.GetAll();
-            return Mapper.Map<IEnumerable<VehicleModelViewModel>>(ModelList);
+            return Mapper.Map<IEnumerable<VehicleModelView>>(ModelList);
         }
         //Create New
-        public async void Create(VehicleMakeViewModel make)
+        public async void Create(VehicleMakeView make)
         {
             MakeService.Add(Mapper.Map<VehicleMake>(make));
             int result = await MakeService.Complete();
         }
-        public async void Create(VehicleModelViewModel model)
+        public async void Create(VehicleModelView model)
         {
             ModelService.Add(Mapper.Map<VehicleModel>(model));
             int result = await ModelService.Complete();
@@ -56,21 +62,21 @@ namespace LVL3.Service
             int result = await ModelService.Complete();
         }
         //Get One
-        public async Task<VehicleMakeViewModel> ReadMake(Guid id)
+        public async Task<VehicleMakeView> ReadMake(Guid id)
         {
-            return Mapper.Map<VehicleMakeViewModel>(await MakeService.Get(id));
+            return Mapper.Map<VehicleMakeView>(await MakeService.Get(id));
         }
-        public async Task<VehicleModelViewModel> ReadModel(Guid id)
+        public async Task<VehicleModelView> ReadModel(Guid id)
         {
-            return Mapper.Map<VehicleModelViewModel>(await ModelService.Get(id));
+            return Mapper.Map<VehicleModelView>(await ModelService.Get(id));
         }
         //Update
-        public async void Update(VehicleMakeViewModel make)
+        public async void Update(VehicleMakeView make)
         {
             MakeService.Edit( Mapper.Map<VehicleMake>(make) );
             int result = await MakeService.Complete();
         }
-        public async void Update(VehicleModelViewModel model)
+        public async void Update(VehicleModelView model)
         {
             ModelService.Edit( Mapper.Map<VehicleModel>(model) );
             int result = await ModelService.Complete();

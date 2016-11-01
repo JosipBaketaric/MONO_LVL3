@@ -45,11 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperConfig\MappingConfig.cs" />
+    <Compile Include="DomainModels\VehicleMakeDomain.cs" />
+    <Compile Include="DomainModels\VehicleModelDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatabaseModels\VehicleMake.cs" />
     <Compile Include="DatabaseModels\VehicleModel.cs" />
-    <Compile Include="ViewModels\VehicleMakeViewModel.cs" />
-    <Compile Include="ViewModels\VehicleModelViewModel.cs" />
+    <Compile Include="ViewModels\VehicleMakeView.cs" />
+    <Compile Include="ViewModels\VehicleModelView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
@@ -60,6 +63,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace LVL3.Model.Common
+namespace LVL3.Model.Common.IView
 {
-    public interface IVehicleModel
+    public interface IVehicleModelView
     {
         Guid VehicleModelId { get; set; }
         Guid VehicleMakeId { get; set; }

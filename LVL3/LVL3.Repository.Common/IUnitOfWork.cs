@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LVL3.Repository.Common
 {
-    public interface IRepositoryFactory
+    public interface IUnitOfWork : IDisposable
     {
 
     }

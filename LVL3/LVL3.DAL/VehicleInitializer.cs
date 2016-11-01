@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using LVL3.Model;
+using LVL3.Model.DatabaseModels;
 
 namespace LVL3.DAL
 {

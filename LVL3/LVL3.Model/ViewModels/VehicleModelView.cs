@@ -1,10 +1,9 @@
-﻿using LVL3.Model;
-using LVL3.Model.Common;
+﻿using LVL3.Model.Common.IView;
 using System;
 
 namespace LVL3.Model.ViewModels
 {
-    public class VehicleModelViewModel : IVehicleModelViewModel
+    public class VehicleModelView : IVehicleModelView
     {
         public Guid VehicleModelId { get; set; }
         public Guid VehicleMakeId { get; set; }

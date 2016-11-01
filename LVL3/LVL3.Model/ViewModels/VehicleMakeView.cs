@@ -1,10 +1,10 @@
-﻿using System;
+﻿using LVL3.Model.Common.IView;
+using System;
 using System.Collections.Generic;
-using LVL3.Model.Common;
 
 namespace LVL3.Model.ViewModels
 {
-    public class VehicleMakeViewModel : IVehicleMakeViewModel
+    public class VehicleMakeView : IVehicleMakeView
     {
         public Guid VehicleMakeId { get; set; }
         public string Name { get; set; }

@@ -15,6 +15,11 @@ namespace LVL3.MVC.App_Start
     using Service;
     using Service.Common;
     using Model.ViewModels;
+    using Repository.Common;
+    using Repository.Repositorys;
+    using Model;
+    using DAL;
+    using System.Linq;
 
     public static class NinjectWebCommon 
     {
@@ -44,7 +49,10 @@ namespace LVL3.MVC.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var kernel = new StandardKernel();
+            var settings = new NinjectSettings();
+            settings.LoadExtensions = true;
+            settings.ExtensionSearchPatterns = settings.ExtensionSearchPatterns.Union(new string[] { "LVL3.*.dll" }).ToArray();
+            var kernel = new StandardKernel(settings);
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
@@ -66,13 +74,21 @@ namespace LVL3.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IVehicleModelViewModel>().To<VehicleModelViewModel>();
-            kernel.Bind<IVehicleMakeViewModel>().To<VehicleMakeViewModel>();
+            kernel.Bind<IVehicleModelViewModel>().To<VehicleModelView>();
+            kernel.Bind<IVehicleMakeViewModel>().To<VehicleMakeView>();
 
-            kernel.Bind<IEnumerable<IVehicleModelViewModel>>().To<IEnumerable<VehicleModelViewModel>>();
-            kernel.Bind<IEnumerable<IVehicleMakeViewModel>>().To<IEnumerable<VehicleMakeViewModel>>();
+            kernel.Bind<IVehicleMake>().To<VehicleMake>();
+            kernel.Bind<IVehicleModel>().To<VehicleModel>();
+
+            kernel.Bind<IEnumerable<VehicleModelView>>().To<IEnumerable<VehicleModelView>>();
+            kernel.Bind<IEnumerable<VehicleMakeView>>().To<IEnumerable<VehicleMakeView>>();
 
             kernel.Bind<IVehicleService>().To<VehicleService>();
-        }        
+
+            kernel.Bind<IMakeRepository>().To<MakeRepository>();
+            kernel.Bind<IModelRepository>().To<ModelRepository>();
+            kernel.Bind<IRepository>().To<Repository>();
+
+        }
     }
 }

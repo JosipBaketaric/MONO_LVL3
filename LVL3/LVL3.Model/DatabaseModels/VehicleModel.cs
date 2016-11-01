@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LVL3.Model.Common;
 using System.ComponentModel.DataAnnotations.Schema;
+using LVL3.Model.Common.IDatabase;
 
-namespace LVL3.Model
+namespace LVL3.Model.DatabaseModels
 {
     public class VehicleModel : IVehicleModel
     {

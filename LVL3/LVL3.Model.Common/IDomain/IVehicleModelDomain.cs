@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LVL3.Model.Common
+namespace LVL3.Model.Common.IDomain
 {
-    public interface IVehicleModelViewModel
+    public interface IVehicleModelDomain
     {
         Guid VehicleModelId { get; set; }
         Guid VehicleMakeId { get; set; }

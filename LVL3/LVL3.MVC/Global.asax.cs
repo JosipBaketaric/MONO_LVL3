@@ -13,7 +13,10 @@ namespace LVL3.MVC
         protected void Application_Start()
         {
             MappingConfig.RegisterMaps();
+            Model.AutoMapperConfig.MappingConfig.RegisterMaps();    //From Models
+
             Database.SetInitializer<VehicleContext>(new VehicleInitializer());
+            
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
