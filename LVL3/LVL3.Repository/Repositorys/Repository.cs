@@ -13,10 +13,17 @@ namespace LVL3.Repository.Repositorys
     public class Repository : IRepository
     {
         protected VehicleContext Context { get; private set; }
+        protected IUnitOfWorkFactory UnitOfWorkFactory { get; set; }
 
-        public Repository(VehicleContext context)
+        public Repository(VehicleContext context, IUnitOfWorkFactory unitOfWorkFactory)
         {
-            Context = context;
+            this.Context = context;
+            this.UnitOfWorkFactory = unitOfWorkFactory;
+        }
+
+        public IUnitOfWork CreateUnitOfWork()
+        {
+            return this.UnitOfWorkFactory.CreateUnitOfWork();
         }
 
         public async Task<int> Add<T>(T entity) where T : class

@@ -8,6 +8,6 @@ namespace LVL3.Repository.Common
 {
     public interface IUnitOfWork : IDisposable
     {
-
+        Task<int> Commit();
     }
 }

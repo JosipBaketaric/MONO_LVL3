@@ -17,11 +17,14 @@ namespace LVL3.Repository
             Context = context;
         }
 
-        //add save and use it in repositorys
-
-        void IDisposable.Dispose()
+        public async Task<int> Commit()
         {
-            throw new NotImplementedException();
+            return await Context.SaveChangesAsync();
+        }
+
+        public void Dispose()
+        {
+            Context.Dispose();
         }
     }
 
