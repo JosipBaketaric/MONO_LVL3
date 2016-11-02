@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using LVL3.DAL;
 using System.Data.Entity.Infrastructure;
 using LVL3.DAL.Common;
+using System.Data.Entity.Migrations;
 
 namespace LVL3.Repository.Repositorys
 {
@@ -69,12 +70,7 @@ namespace LVL3.Repository.Repositorys
 
         public async Task<int> Update<T>(T entity) where T : class
         {
-            //DbEntityEntry entry = Context.Entry(entity);
-
-            //if (entry.State == EntityState.Detached)
-            //    Context.Set<T>().Attach(entity);
-
-            Context.Entry(entity).State = EntityState.Modified;
+            Context.Set<T>().AddOrUpdate(entity);
 
             return await Context.SaveChangesAsync();
         }

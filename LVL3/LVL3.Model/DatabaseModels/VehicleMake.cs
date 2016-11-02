@@ -12,6 +12,7 @@ namespace LVL3.Model.DatabaseModels
         public string Name { get; set; }
         public string Abrv { get; set; }
 
-        public ICollection<VehicleModel> VehicleModel;
+        public ICollection<IVehicleModel> VehicleModel { get; set; }
+
     }
 }

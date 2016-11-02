@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LVL3.Model.Common.IDatabase;
+using System;
 
 namespace LVL3.Model.Common.IView
 {
@@ -8,5 +9,6 @@ namespace LVL3.Model.Common.IView
         Guid VehicleMakeId { get; set; }
         string Name { get; set; }
         string Abrv { get; set; }
+        IVehicleMake VehicleMake { get; set; }
     }
 }

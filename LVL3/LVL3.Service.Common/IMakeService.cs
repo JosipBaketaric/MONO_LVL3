@@ -8,11 +8,11 @@ namespace LVL3.Service.Common
 {
     public interface IMakeService
     {
-        Task<IEnumerable<IVehicleMakeView>> ReadAll();
-        Task<IVehicleMakeView> Read(Guid id);
-        Task<int> Add(IVehicleMakeView entry);
+        Task<IEnumerable<IVehicleMakeDomain>> ReadAll();
+        Task<IVehicleMakeDomain> Read(Guid id);
+        Task<int> Add(IVehicleMakeDomain entry);
         Task<int> Update(IVehicleMakeDomain entry);
-        Task<int> Delete(IVehicleMakeView entry);
+        Task<int> Delete(IVehicleMakeDomain entry);
         Task<int> Delete(Guid id);
     }
 }

@@ -18,9 +18,9 @@ namespace LVL3.Service
             this.ModelRepository = modelRepository;
         }
 
-        public async Task<int> Add(IVehicleModelView entry)
+        public async Task<int> Add(IVehicleModelDomain entry)
         {
-            return await ModelRepository.Add( AutoMapper.Mapper.Map<VehicleModelDomain>(entry) );
+            return await ModelRepository.Add(entry);
         }
 
         public async Task<int> Delete(Guid id)
@@ -28,24 +28,24 @@ namespace LVL3.Service
             return await ModelRepository.Delete(id);
         }
 
-        public async Task<int> Delete(IVehicleModelView entry)
+        public async Task<int> Delete(IVehicleModelDomain entry)
         {
-            return await ModelRepository.Delete( AutoMapper.Mapper.Map<VehicleModelDomain>(entry) );
+            return await ModelRepository.Delete(entry);
         }
 
-        public async Task<IVehicleModelView> Read(Guid id)
+        public async Task<IVehicleModelDomain> Read(Guid id)
         {
-            return AutoMapper.Mapper.Map<IVehicleModelView>( await ModelRepository.Get(id));
+            return await ModelRepository.Get(id);
         }
 
-        public async Task<IEnumerable<IVehicleModelView>> ReadAll()
+        public async Task<IEnumerable<IVehicleModelDomain>> ReadAll()
         {
-            return AutoMapper.Mapper.Map<IEnumerable<IVehicleModelView>>(await ModelRepository.GetAll());
+            return await ModelRepository.GetAll();
         }
 
-        public async Task<int> Update(IVehicleModelView entry)
+        public async Task<int> Update(IVehicleModelDomain entry)
         {
-            return await ModelRepository.Update( AutoMapper.Mapper.Map<VehicleModelDomain>(entry) );
+            return await ModelRepository.Update(entry);
         }
     }
 

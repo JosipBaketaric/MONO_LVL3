@@ -1,4 +1,5 @@
-﻿using LVL3.Model.Common.IDomain;
+﻿using LVL3.Model.Common.IDatabase;
+using LVL3.Model.Common.IDomain;
 using LVL3.Model.DatabaseModels;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,6 @@ namespace LVL3.Model.DomainModels
         public string Name { get; set; }
         public string Abrv { get; set; }
 
-        public ICollection<VehicleModel> VehicleModel;
+        public ICollection<IVehicleModel> VehicleModel { get; set; }
     }
 }
