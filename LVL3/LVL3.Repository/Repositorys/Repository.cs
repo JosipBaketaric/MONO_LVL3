@@ -7,15 +7,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using LVL3.DAL;
 using System.Data.Entity.Infrastructure;
+using LVL3.DAL.Common;
 
 namespace LVL3.Repository.Repositorys
 {
     public class Repository : IRepository
     {
-        protected VehicleContext Context { get; private set; }
+        protected IVehicleContext Context { get; private set; }
         protected IUnitOfWorkFactory UnitOfWorkFactory { get; set; }
 
-        public Repository(VehicleContext context, IUnitOfWorkFactory unitOfWorkFactory)
+        public Repository(IVehicleContext context, IUnitOfWorkFactory unitOfWorkFactory)
         {
             this.Context = context;
             this.UnitOfWorkFactory = unitOfWorkFactory;

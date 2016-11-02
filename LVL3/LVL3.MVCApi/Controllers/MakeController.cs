@@ -11,22 +11,20 @@ namespace LVL3.MVCApi.Controllers
     public class MakeController : ApiController
     {
         protected IMakeService MakeService;
-        protected IVehicleMakeView VehicleMake;
 
-        public MakeController(IMakeService makeService, IVehicleMakeView vehicleMake)
+        public MakeController(IMakeService makeService)
         {
             this.MakeService = makeService;
-            this.VehicleMake = vehicleMake;
         }
 
         [Route("getall")]
         public async Task<HttpResponseMessage> GetAll()
         {
-            var makes = await MakeService.ReadAll();
+            var response = await MakeService.ReadAll();
 
             //var json = new JavaScriptSerializer().Serialize(makes);
 
-            return Request.CreateResponse(HttpStatusCode.OK, makes);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
 

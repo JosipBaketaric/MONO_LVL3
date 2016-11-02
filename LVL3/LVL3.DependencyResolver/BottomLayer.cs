@@ -5,6 +5,8 @@ using LVL3.Model.Common.IView;
 using LVL3.Model.DatabaseModels;
 using LVL3.Model.DomainModels;
 using LVL3.Model.ViewModels;
+using LVL3.DAL;
+using LVL3.DAL.Common;
 
 namespace LVL3.DependencyResolver
 {
@@ -20,6 +22,8 @@ namespace LVL3.DependencyResolver
 
             Bind<IVehicleMakeView>().To<VehicleMakeView>();
             Bind<IVehicleModelView>().To<VehicleModelView>();
+
+            Bind<IVehicleContext>().To<VehicleContext>();
         }
     }
 }

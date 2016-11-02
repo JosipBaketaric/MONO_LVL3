@@ -1,4 +1,5 @@
 ﻿using LVL3.DAL;
+using LVL3.DAL.Common;
 using LVL3.Repository.Common;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace LVL3.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        protected VehicleContext Context;
+        protected IVehicleContext Context;
 
-        public UnitOfWork(VehicleContext context)
+        public UnitOfWork(IVehicleContext context)
         {
             Context = context;
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using LVL3.Model.DatabaseModels;
+using LVL3.DAL.Common;
 
 namespace LVL3.DAL
 {

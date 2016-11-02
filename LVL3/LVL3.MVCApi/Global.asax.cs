@@ -15,8 +15,7 @@ namespace LVL3.MVCApi
     {
         protected void Application_Start()
         {
-            Model.AutoMapperConfig.MappingConfig.RegisterMaps();    //From Models
-            Database.SetInitializer<VehicleContext>(new VehicleInitializer());
+            DependencyResolver.AutoMapperConfig.MappingConfig.RegisterMaps();    //From Models
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

@@ -6,7 +6,7 @@ using LVL3.Model.DatabaseModels;
 using LVL3.Model.DomainModels;
 using LVL3.Model.ViewModels;
 
-namespace LVL3.Model.AutoMapperConfig
+namespace LVL3.DependencyResolver.AutoMapperConfig
 {
     public static class MappingConfig
     {

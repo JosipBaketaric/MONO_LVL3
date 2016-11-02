@@ -30,6 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -44,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperConfig\MappingConfig.cs" />
     <Compile Include="BottomLayer.cs" />
     <Compile Include="MiddleLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +59,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LVL3.DAL.Common\LVL3.DAL.Common.csproj">
+      <Project>{fbf2f256-50dd-4520-a336-8f90415e748d}</Project>
+      <Name>LVL3.DAL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LVL3.DAL\LVL3.DAL.csproj">
+      <Project>{f97d809e-73ec-42e0-be5d-35db52cf0c0c}</Project>
+      <Name>LVL3.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
       <Project>{63a8c737-a608-4321-8795-e345be2a39a5}</Project>
       <Name>LVL3.Model.Common</Name>
