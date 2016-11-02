@@ -9,10 +9,10 @@ namespace LVL3.Model.DatabaseModels
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid VehicleModelId { get; set; }
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //[ForeignKey("VehicleMake")]
+        [ForeignKey("VehicleMake")]
         public Guid VehicleMakeId { get; set; }
         public string Name { get; set; }
         public string Abrv { get; set; }
-        public virtual IVehicleMake VehicleMake { get; set; }
+        public virtual VehicleMake VehicleMake { get; set; }
     }
 }

@@ -11,8 +11,7 @@ namespace LVL3.Model.DatabaseModels
         public Guid VehicleMakeId { get; set; }
         public string Name { get; set; }
         public string Abrv { get; set; }
-
-        public virtual ICollection<IVehicleModel> VehicleModels { get; set; }
+        public virtual ICollection<VehicleModel> VehicleModel { get; set; }
 
     }
 }
