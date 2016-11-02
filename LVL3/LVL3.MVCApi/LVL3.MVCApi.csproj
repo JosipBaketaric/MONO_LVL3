@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -311,6 +315,10 @@
       <Project>{fbf2f256-50dd-4520-a336-8f90415e748d}</Project>
       <Name>LVL3.DAL.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LVL3.DAL\LVL3.DAL.csproj">
+      <Project>{f97d809e-73ec-42e0-be5d-35db52cf0c0c}</Project>
+      <Name>LVL3.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LVL3.DependencyResolver\LVL3.DependencyResolver.csproj">
       <Project>{3ecffd03-44cf-447b-ac75-00d00ccac667}</Project>
       <Name>LVL3.DependencyResolver</Name>
@@ -318,6 +326,10 @@
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
       <Project>{63a8c737-a608-4321-8795-e345be2a39a5}</Project>
       <Name>LVL3.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LVL3.Model\LVL3.Model.csproj">
+      <Project>{3e2e7f12-fa62-4471-9783-20f79146f7d2}</Project>
+      <Name>LVL3.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\LVL3.Service.Common\LVL3.Service.Common.csproj">
       <Project>{5965d45f-b366-4fd6-913f-014d3287c88b}</Project>

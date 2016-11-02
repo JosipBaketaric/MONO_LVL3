@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LVL3.Model.Common.IDomain;
 using LVL3.Model.DatabaseModels;
 using LVL3.Model.DomainModels;
+using LVL3.Model.Common.IDatabase;
 
 namespace LVL3.Repository.Repositorys
 {
@@ -36,7 +37,7 @@ namespace LVL3.Repository.Repositorys
 
         public async Task<IVehicleMakeDomain> Get(Guid id)
         {
-            return AutoMapper.Mapper.Map<IVehicleMakeDomain>( await Repository.Get<VehicleMake>(id));
+            return AutoMapper.Mapper.Map<VehicleMakeDomain>( await Repository.Get<VehicleMake>(id));
         }
 
         public async Task<IEnumerable<IVehicleMakeDomain>> GetAll()
@@ -46,7 +47,7 @@ namespace LVL3.Repository.Repositorys
 
         public async Task<int> Update(IVehicleMakeDomain entity)
         {
-            return await Repository.Update<VehicleMake>(AutoMapper.Mapper.Map<VehicleMake>(entity));
+            return await Repository.Update<VehicleMake>(AutoMapper.Mapper.Map<VehicleMake>(entity) );
         }
     }
 

@@ -58,7 +58,7 @@
       <Name>LVL3.Model.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\LVL3.Model\LVL3.Model.csproj">
-      <Project>{3E2E7F12-FA62-4471-9783-20F79146F7D2}</Project>
+      <Project>{3e2e7f12-fa62-4471-9783-20f79146f7d2}</Project>
       <Name>LVL3.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\LVL3.Repository.Common\LVL3.Repository.Common.csproj">

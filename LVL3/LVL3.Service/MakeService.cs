@@ -43,10 +43,11 @@ namespace LVL3.Service
             return AutoMapper.Mapper.Map<IEnumerable<IVehicleMakeView>>( await MakeRepository.GetAll());
         }
 
-        public async Task<int> Update(IVehicleMakeView entry)
+        public async Task<int> Update(IVehicleMakeDomain entry)
         {
-            return await MakeRepository.Update( AutoMapper.Mapper.Map<VehicleMakeDomain>(entry) );
+            return await MakeRepository.Update(entry);
         }
+
     }
 
 }

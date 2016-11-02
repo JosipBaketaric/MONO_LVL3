@@ -15,8 +15,10 @@ namespace LVL3.DependencyResolver.AutoMapperConfig
             Mapper.Initialize(config =>
             {
                 //Make to Domain
-                config.CreateMap<VehicleMake, VehicleMakeDomain>().ReverseMap();
+                config.CreateMap<VehicleMake, VehicleMakeDomain>().ReverseMap();    //Imodel to model
+                config.CreateMap<VehicleMake, IVehicleMakeDomain>().ReverseMap();
                 config.CreateMap<VehicleModel, VehicleModelDomain>().ReverseMap();
+                config.CreateMap<VehicleModel, IVehicleMakeDomain>().ReverseMap();
 
                 config.CreateMap<IVehicleMake, IVehicleMakeDomain>().ReverseMap();
                 config.CreateMap<IVehicleModel, IVehicleModelDomain>().ReverseMap();

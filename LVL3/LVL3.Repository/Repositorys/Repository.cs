@@ -69,12 +69,12 @@ namespace LVL3.Repository.Repositorys
 
         public async Task<int> Update<T>(T entity) where T : class
         {
-            DbEntityEntry entry = Context.Entry(entity);
+            //DbEntityEntry entry = Context.Entry(entity);
 
-            if (entry.State == EntityState.Detached)
-                Context.Set<T>().Attach(entity);
+            //if (entry.State == EntityState.Detached)
+            //    Context.Set<T>().Attach(entity);
 
-            entry.State = EntityState.Modified;
+            Context.Entry(entity).State = EntityState.Modified;
 
             return await Context.SaveChangesAsync();
         }
