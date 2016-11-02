@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LVL3.Model.Common.IView;
 using LVL3.Repository.Common;
 using LVL3.Model.Common.IDomain;
+using LVL3.Model.DomainModels;
 
 namespace LVL3.Service
 {
@@ -19,7 +20,7 @@ namespace LVL3.Service
 
         public async Task<int> Add(IVehicleMakeView entry)
         {
-            return await MakeRepository.Add( AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry) );
+            return await MakeRepository.Add( AutoMapper.Mapper.Map<VehicleMakeDomain>(entry) );
         }
 
         public async Task<int> Delete(Guid id)
@@ -29,7 +30,7 @@ namespace LVL3.Service
 
         public async Task<int> Delete(IVehicleMakeView entry)
         {
-            return await MakeRepository.Delete(AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry));
+            return await MakeRepository.Delete(AutoMapper.Mapper.Map<VehicleMakeDomain>(entry));
         }
 
         public async Task<IVehicleMakeView> Read(Guid id)
@@ -44,7 +45,7 @@ namespace LVL3.Service
 
         public async Task<int> Update(IVehicleMakeView entry)
         {
-            return await MakeRepository.Update( AutoMapper.Mapper.Map<IVehicleMakeDomain>(entry) );
+            return await MakeRepository.Update( AutoMapper.Mapper.Map<VehicleMakeDomain>(entry) );
         }
     }
 
