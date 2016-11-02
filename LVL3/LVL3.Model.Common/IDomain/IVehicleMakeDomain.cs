@@ -9,6 +9,6 @@ namespace LVL3.Model.Common.IDomain
         Guid VehicleMakeId { get; set; }
         string Name { get; set; }
         string Abrv { get; set; }
-        ICollection<IVehicleModel> VehicleModel { get; set; }
+        ICollection<IVehicleModel> VehicleModels { get; set; }
     }
 }
