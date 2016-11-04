@@ -248,10 +248,12 @@
     <Content Include="app\controllers\make\makerDetailsController.js" />
     <Content Include="app\controllers\make\makersController.js" />
     <Content Include="app\controllers\make\makeDeleteController.js" />
+    <Content Include="app\controllers\make\makeUpdateController.js" />
     <Content Include="app\controllers\model\modelAddController.js" />
     <Content Include="app\controllers\model\modelDeleteController.js" />
     <Content Include="app\controllers\model\modelDetailsController.js" />
     <Content Include="app\controllers\model\modelsController.js" />
+    <Content Include="app\controllers\model\modelUpdateController.js" />
     <Content Include="app\js\angular-route.js" />
     <Content Include="app\js\angular.js" />
     <Content Include="app\js\bootstrap\css\bootstrap-theme.css" />
@@ -266,9 +268,11 @@
     <Content Include="app\views\make\add.html" />
     <Content Include="app\views\make\details.html" />
     <Content Include="app\views\make\index.html" />
+    <Content Include="app\views\make\update.html" />
     <Content Include="app\views\model\add.html" />
     <Content Include="app\views\model\details.html" />
     <Content Include="app\views\model\index.html" />
+    <Content Include="app\views\model\update.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

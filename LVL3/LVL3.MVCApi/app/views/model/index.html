@@ -7,6 +7,7 @@
             <th>Name</th>
             <th>Abrv</th>
             <th>Maker</th>
+            <th></th>
         </tr>
 
         <tr ng-repeat="item in data">
@@ -14,7 +15,8 @@
             <td>{{item.Abrv}}</td>
             <td>{{item.VehicleMakeId}}</td>
             <td>
-                <a href="#/model/details/{{item.VehicleModelId}}" class="button">Details</a>
+                <a href="#/model/details/{{item.VehicleModelId}}" class="button">Details</a>               
+                <a ng-controller="modelUpdateController" href="#/model/update/{{item.VehicleModelId}}" class="button">Update</a>
                 <a ng-controller="modelDeleteController" ng-href="#/model" ng-click='delete(item.VehicleModelId)' class="button">Delete</a>
             </td>
         </tr>            

@@ -6,6 +6,7 @@
         <tr>
             <th>Name</th>
             <th>Abrv</th>
+            <th></th>
         </tr>
 
         <tbody ng-repeat="item in data">
@@ -14,6 +15,7 @@
                 <td>{{item.Abrv}}</td>
                 <td>
                     <a href="#/make/details/{{item.VehicleMakeId}}" class="button">Details</a>
+                    <a ng-controller="makeUpdateController" ng-href="#/make/update/{{item.VehicleMakeId}}" class="button">Update</a>
                     <a ng-controller="makeDeleteController" ng-href="#/make" ng-click='delete(item.VehicleMakeId)' class="button">Delete</a>
                 </td>
             </tr>

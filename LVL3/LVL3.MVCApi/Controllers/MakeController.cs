@@ -68,10 +68,10 @@ namespace LVL3.MVCApi.Controllers
         }
 
         [HttpPut]
-        [Route("update/{id:guid}")]
-        public async Task<HttpResponseMessage> Update(Guid id, VehicleMakeView vehicleMakeView)   
+        [Route("update/")]
+        public async Task<HttpResponseMessage> Update(VehicleMakeView vehicleMakeView)   
         {
-            var toBeUpdated = await MakeService.Read(id);
+            var toBeUpdated = await MakeService.Read(vehicleMakeView.VehicleMakeId);
 
             if(vehicleMakeView.Name != null)
                 toBeUpdated.Name = vehicleMakeView.Name;

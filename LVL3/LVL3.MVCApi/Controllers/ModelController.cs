@@ -69,10 +69,10 @@ namespace LVL3.MVCApi.Controllers
         }
 
         [HttpPut]
-        [Route("update/{id:guid}")]
-        public async Task<HttpResponseMessage> Update(Guid id, VehicleModelView vehicleModelView)
+        [Route("update")]
+        public async Task<HttpResponseMessage> Update(VehicleModelView vehicleModelView)
         {
-            var toBeUpdated = await ModelService.Read(id);
+            var toBeUpdated = await ModelService.Read(vehicleModelView.VehicleModelId);
 
             if (vehicleModelView.Name != null)
                 toBeUpdated.Name = vehicleModelView.Name;
