@@ -1,6 +1,6 @@
-﻿<div ng-controller="getAllModelsController">
+﻿<div ng-controller="modelsController" ng-init="getAllModels()">
 
-    <table class="table">
+    <table class="table" id="modelsTable">
 
         <tr>
             <th>Name</th>
@@ -12,6 +12,10 @@
             <td>{{item.Name}}</td>
             <td>{{item.Abrv}}</td>
             <td>{{item.VehicleMakeId}}</td>
+            <td>
+                <a href="#/model/details/{{item.VehicleModelId}}" class="button">Details</a>
+                <a ng-controller="modelDeleteController" ng-href="#/model" ng-click='delete(item.VehicleModelId)' class="button">Delete</a>
+            </td>
         </tr>            
 
     </table>

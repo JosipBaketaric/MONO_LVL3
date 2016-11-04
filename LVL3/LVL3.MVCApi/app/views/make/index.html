@@ -1,4 +1,4 @@
-﻿<div ng-controller="getAllMakersController">
+﻿<div ng-controller="makersController" ng-init="getAllMakers()">
 
     <table class="table">
 
@@ -11,6 +11,10 @@
             <tr>
                 <td>{{item.Name}}</td>
                 <td>{{item.Abrv}}</td>
+                <td>
+                    <a href="#/make/details/{{item.VehicleMakeId}}" class="button">Details</a>
+                    <a ng-controller="makeDeleteController" ng-href="#/make" ng-click='delete(item.VehicleMakeId)' class="button">Delete</a>
+                </td>
             </tr>
         </tbody>
         

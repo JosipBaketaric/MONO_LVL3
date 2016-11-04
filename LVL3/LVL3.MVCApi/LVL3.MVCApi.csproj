@@ -244,8 +244,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\controllers\make\getAllMakersController.js" />
-    <Content Include="app\controllers\model\getAllModelsController.js" />
+    <Content Include="app\controllers\make\makerDetailsController.js" />
+    <Content Include="app\controllers\make\makersController.js" />
+    <Content Include="app\controllers\make\makeDeleteController.js" />
+    <Content Include="app\controllers\model\modelDeleteController.js" />
+    <Content Include="app\controllers\model\modelDetailsController.js" />
+    <Content Include="app\controllers\model\modelsController.js" />
     <Content Include="app\js\angular-route.js" />
     <Content Include="app\js\angular.js" />
     <Content Include="app\js\bootstrap\css\bootstrap-theme.css" />
@@ -257,8 +261,9 @@
     <Content Include="app\js\bootstrap\js\bootstrap.min.js" />
     <Content Include="app\js\bootstrap\js\npm.js" />
     <Content Include="app\js\jquery-1.10.2.js" />
-    <Content Include="app\views\main.html" />
+    <Content Include="app\views\make\details.html" />
     <Content Include="app\views\make\index.html" />
+    <Content Include="app\views\model\details.html" />
     <Content Include="app\views\model\index.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />

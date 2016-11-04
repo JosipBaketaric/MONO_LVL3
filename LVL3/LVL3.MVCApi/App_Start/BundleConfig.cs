@@ -32,8 +32,8 @@ namespace LVL3.MVCApi
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/app/app.js",
-                "~/app/controllers/make/*Controller.js",
-                "~/app/controllers/model/*Controller.js"
+                "~/app/controllers/model/*Controller.js",
+                "~/app/controllers/make/*Controller.js"
                 ));
         }
     }
