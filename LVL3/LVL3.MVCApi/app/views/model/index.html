@@ -1,0 +1,18 @@
+﻿<div ng-controller="getAllModelsController">
+
+    <table class="table">
+
+        <tr>
+            <th>Name</th>
+            <th>Abrv</th>
+            <th>Maker</th>
+        </tr>
+
+        <tr ng-repeat="item in data">
+            <td>{{item.Name}}</td>
+            <td>{{item.Abrv}}</td>
+            <td>{{item.VehicleMakeId}}</td>
+        </tr>            
+
+    </table>
+</div>

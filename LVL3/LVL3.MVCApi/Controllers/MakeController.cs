@@ -56,10 +56,13 @@ namespace LVL3.MVCApi.Controllers
         [HttpDelete]
         [Route("delete")]
         public async Task<HttpResponseMessage> Delete(Guid id)
-        {   
-            //TODO
-            //Add check if any models are using this make and forbid delete or delete all models that
-            //are using this make aswell
+        {
+            var maker = AutoMapper.Mapper.Map<VehicleMakeView>( await MakeService.Read(id) );
+
+            if (maker.VehicleModel.Count != 0)
+                return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, 
+                    "Maker has models bind to him. First delete all the models it is using.");
+
             var response = await MakeService.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }

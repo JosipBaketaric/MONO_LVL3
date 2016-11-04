@@ -56,9 +56,10 @@ namespace LVL3.MVCApi.Controllers
             if(vehicleModelView.Name == null || vehicleModelView.Abrv == null || vehicleModelView.VehicleMakeId == null)
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Model is not complete. Please provide name, abrv and make id");
 
-            //TODO
-            //Check if VehicleMakeId realy belongs to some Maker.
-            //If not return bad request with appropriate message
+            var fMakerExist = await MakeService.Read(vehicleModelView.VehicleMakeId);
+
+            if(fMakerExist == null)
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid VehicleMakeId");
 
             vehicleModelView.VehicleModelId = Guid.NewGuid();
 

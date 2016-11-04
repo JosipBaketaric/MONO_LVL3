@@ -1,0 +1,18 @@
+﻿<div ng-controller="getAllMakersController">
+
+    <table class="table">
+
+        <tr>
+            <th>Name</th>
+            <th>Abrv</th>
+        </tr>
+
+        <tbody ng-repeat="item in data">
+            <tr>
+                <td>{{item.Name}}</td>
+                <td>{{item.Abrv}}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html ng-app="appModule">
+    <head>
+        <title>LVL 3</title>
+	    <meta charset="utf-8" />
+
+        <!-- SCROLLS -->
+        <!-- load bootstrap and fontawesome via CDN -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+        <!-- SPELLS -->
+        <!-- load angular and angular route via CDN -->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>-->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>-->
+
+        <script src="../js/angular.js"></script>
+        <script src="../js/angular-route.js"></script>
+
+        <script src="../app.js"></script>
+    </head>
+
+    <body ng-controller="mainController">
+        <!--Header-->
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">LVL 3 Task</a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#make"><i class="fa fa-shield"></i> Makes</a></li>
+                        <li><a href="#model"><i class="fa fa-shield"></i> Models</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--End of header-->
+
+        <!--Main content and here are views injected-->
+        <div id="main">
+            {{message}}
+
+            <!--Here views will be injected-->
+            <div ng-view>
+            </div>
+
+        </div>
+        <!--End of main content-->
+        <script src="../js/jquery-1.10.2.js"></script>
+    </body>
+
+</html>
