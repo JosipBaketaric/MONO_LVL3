@@ -16,6 +16,10 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
         url: '/make/details/:id',
         templateUrl: 'app/views/make/details.html'
     })
+    .state('make/add', {
+        url: '/make/add',
+        templateUrl: 'app/views/make/add.html'
+    })
 
 
         //Model
@@ -26,6 +30,10 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
     .state('model/details/:id', {
         url: '/model/details/:id',
         templateUrl: 'app/views/model/details.html'
+    })
+    .state('model/add', {
+        url: '/model/add',
+        templateUrl: 'app/views/model/add.html'
     })
 
 });
