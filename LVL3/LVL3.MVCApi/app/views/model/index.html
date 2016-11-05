@@ -10,10 +10,10 @@
             <th></th>
         </tr>
 
-        <tr ng-repeat="item in data">
+        <tr ng-repeat="item in dataModel">
             <td>{{item.Name}}</td>
             <td>{{item.Abrv}}</td>
-            <td>{{item.VehicleMakeId}}</td>
+            <td >{{item.VehicleMakeName}}</td>
             <td>
                 <a href="#/model/details/{{item.VehicleModelId}}" class="button">Details</a>               
                 <a ng-controller="modelUpdateController" href="#/model/update/{{item.VehicleModelId}}" class="button">Update</a>
