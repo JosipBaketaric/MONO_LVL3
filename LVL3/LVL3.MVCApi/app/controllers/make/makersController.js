@@ -23,8 +23,12 @@ function makersController($scope, $http, $window) {
             $http.delete('/api/make/delete?id=' + id).success(function (data) {
                 $scope.response = data;
             })
-        }
-        
-    };   
+        }       
+    };
+
+    $scope.sort = function (keyname) {
+        $scope.sortKey = keyname;
+        $scope.reverse = !$scope.reverse;
+    }
 
 }

@@ -49,6 +49,9 @@ function modelsController($scope, $http, $window, $state) {
 
     };
 
-  
+    $scope.sort = function (keyname) {
+        $scope.sortKey = keyname;
+        $scope.reverse = !$scope.reverse;
+    }
     
 }//End of controller function

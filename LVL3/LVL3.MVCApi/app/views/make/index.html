@@ -11,12 +11,16 @@
     <table class="table">
 
         <tr>
-            <th>Name</th>
-            <th>Abrv</th>
+            <th ng-click="sort('Name')">Name
+                <span class="glyphicon sort-icon" ng-show="sortKey=='Name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th ng-click="sort('Abrv')">Abrv
+                <span class="glyphicon sort-icon" ng-show="sortKey=='Abrv'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th></th>
         </tr>
 
-        <tbody ng-repeat="item in data|filter:search">
+        <tbody ng-repeat="item in data|filter:search|orderBy:sortKey:reverse">
             <tr>
                 <td>{{item.Name}}</td>
                 <td>{{item.Abrv}}</td>
