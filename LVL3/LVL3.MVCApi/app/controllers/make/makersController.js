@@ -3,6 +3,9 @@ angular.module('appModule').controller('makersController', ['$scope', '$http', '
 
 //Controller method
 function makersController($scope, $http, $window) {
+
+    var dataSFP;
+    var sortingOrder = 'name'; //default sort
         //get all data
         $scope.getAllMakers = function () {
             $http.get('/api/make/getall').success(function (data) {
@@ -22,6 +25,6 @@ function makersController($scope, $http, $window) {
             })
         }
         
-    };
+    };   
 
 }

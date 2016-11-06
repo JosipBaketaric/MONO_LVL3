@@ -7,7 +7,7 @@ function modelsController($scope, $http, $window, $state) {
     var makers;
 
     $scope.getAllModels = function () {
-
+        console.log("get all models");
         //get all data
         $http.get('/api/model/getall').success(function (data) {
             $scope.dataModel = data;
@@ -43,10 +43,12 @@ function modelsController($scope, $http, $window, $state) {
                     }
                 }
             }//end of for
+            console.log("inject maker name");
 
         };//End of function
 
     };
 
+  
     
 }//End of controller function

@@ -35,6 +35,8 @@ namespace LVL3.MVCApi
                 "~/app/controllers/model/*Controller.js",
                 "~/app/controllers/make/*Controller.js"
                 ));
+
+
         }
     }
 }

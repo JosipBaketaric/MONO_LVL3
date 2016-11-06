@@ -1,25 +1,39 @@
 ﻿<div ng-controller="modelsController" ng-init="getAllModels()">
+    <div class="container">
+        
+        <div class="form-inline">
+            <div class="form-group pull-right">                
+                <label>Search</label>
+                <input type="text" ng-model="search" class="form-control" placeholder="Search" />
+            </div>           
+        </div>
 
-    <a href="#/model/add" class="button">Add</a>
-    <table class="table" id="modelsTable">
+        <br />
+        <a href="#/model/add" class="button pull-left">Add</a>
+        <table class="table table-hover" id="modelsTable">
+            <thead>
+                <tr>
+                    <th><a>Name </a></th>
+                    <th><a>Abrv </a></th>
+                    <th>Maker</th>
+                    <th></th>
+                </tr>
+            </thead>
 
-        <tr>
-            <th>Name</th>
-            <th>Abrv</th>
-            <th>Maker</th>
-            <th></th>
-        </tr>
+            <tbody>
+                <tr ng-repeat="item in dataModel|filter:search">
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Abrv}}</td>
+                    <td>{{item.VehicleMakeName}}</td>
+                    <td>
+                        <a href="#/model/details/{{item.VehicleModelId}}" class="button">Details</a>
+                        <a ng-controller="modelUpdateController" href="#/model/update/{{item.VehicleModelId}}" class="button">Update</a>
+                        <a ng-controller="modelDeleteController" ng-href="#/model" ng-click='delete(item.VehicleModelId)' class="button">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
 
-        <tr ng-repeat="item in dataModel">
-            <td>{{item.Name}}</td>
-            <td>{{item.Abrv}}</td>
-            <td >{{item.VehicleMakeName}}</td>
-            <td>
-                <a href="#/model/details/{{item.VehicleModelId}}" class="button">Details</a>               
-                <a ng-controller="modelUpdateController" href="#/model/update/{{item.VehicleModelId}}" class="button">Update</a>
-                <a ng-controller="modelDeleteController" ng-href="#/model" ng-click='delete(item.VehicleModelId)' class="button">Delete</a>
-            </td>
-        </tr>            
-
-    </table>
+        </table>
+    </div>
+    
 </div>
