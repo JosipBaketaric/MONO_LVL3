@@ -20,7 +20,7 @@
             <th></th>
         </tr>
 
-        <tbody ng-repeat="item in data|filter:search|orderBy:sortKey:reverse">
+        <tbody dir-paginate="item in data|filter:search|orderBy:sortKey:reverse|itemsPerPage:5">
             <tr>
                 <td>{{item.Name}}</td>
                 <td>{{item.Abrv}}</td>
@@ -33,4 +33,9 @@
         </tbody>
         
     </table>
+    <dir-pagination-controls 
+    max-size="5"
+    direction-links="true"
+    boundary-links="true">
+    </dir-pagination-controls>
 </div>

@@ -1,6 +1,6 @@
 ﻿
 //Create the module and include ngRoute for routing
-var appModule = angular.module('appModule', ['ui.router']);
+var appModule = angular.module('appModule', ['ui.router', 'angularUtils.directives.dirPagination']);
 
 //configure routes
 appModule.config(function ($stateProvider, $urlRouterProvider) {
