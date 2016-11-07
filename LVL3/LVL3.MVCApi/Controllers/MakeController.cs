@@ -24,63 +24,113 @@ namespace LVL3.MVCApi.Controllers
         [Route("getall")]
         public async Task<HttpResponseMessage> GetAll()
         {
-            var response = AutoMapper.Mapper.Map< IEnumerable<VehicleMakeView> >( await MakeService.ReadAll() );
-            //var response = await MakeService.ReadAll();
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            try
+            {
+                var response = AutoMapper.Mapper.Map<IEnumerable<VehicleMakeView>>(await MakeService.ReadAll());
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't get data. Database error.");
+            }
         }
 
         [HttpGet]
         [Route("get")]
         public async Task<HttpResponseMessage> Get(Guid id)
         {
-            var response = AutoMapper.Mapper.Map<VehicleMakeView>( await MakeService.Read(id));
+            try
+            {
+                var response = AutoMapper.Mapper.Map<VehicleMakeView>(await MakeService.Read(id));
 
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+                if(response == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Bad id.");
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't get data. Database error.");
+            }
         }
 
         [HttpPost]
         [Route("add")]
         public async Task<HttpResponseMessage> Add(VehicleMakeView vehicleMakeView)
         {
+            try
+            {
+                if (vehicleMakeView.Name == null || vehicleMakeView.Abrv == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Model is not complete. Please provide name and abrv");
+
+                vehicleMakeView.VehicleMakeId = Guid.NewGuid();
+
+                var response = await MakeService.Add(AutoMapper.Mapper.Map<VehicleMakeDomain>(vehicleMakeView));
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't add data. Database error.");
+            }
             
-            if (vehicleMakeView.Name == null || vehicleMakeView.Abrv == null)
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Model is not complete. Please provide name and abrv");
-
-            vehicleMakeView.VehicleMakeId = Guid.NewGuid();
-
-            var response = await MakeService.Add( AutoMapper.Mapper.Map<VehicleMakeDomain>(vehicleMakeView) );              
-
-            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
         [HttpDelete]
         [Route("delete")]
         public async Task<HttpResponseMessage> Delete(Guid id)
         {
-            var maker = AutoMapper.Mapper.Map<VehicleMakeView>( await MakeService.Read(id) );
+            try
+            {
+                var maker = AutoMapper.Mapper.Map<VehicleMakeView>(await MakeService.Read(id));
 
-            if (maker.VehicleModel.Count != 0)
-                return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, 
-                    "Maker has models bind to him. First delete all the models it is using.");
+                if (maker.VehicleModel.Count != 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                        "Maker has models bind to him. First delete all the models it is using.");
 
-            var response = await MakeService.Delete(id);
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+                if(maker == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Bad id.");
+
+                var response = await MakeService.Delete(id);
+
+                if(response == 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Couldn't delete maker.");
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't delete data. Database error.");
+            }
+
         }
 
         [HttpPut]
         [Route("update/")]
         public async Task<HttpResponseMessage> Update(VehicleMakeView vehicleMakeView)   
         {
-            var toBeUpdated = await MakeService.Read(vehicleMakeView.VehicleMakeId);
+            try
+            {
+                var toBeUpdated = await MakeService.Read(vehicleMakeView.VehicleMakeId);
 
-            if(vehicleMakeView.Name != null)
-                toBeUpdated.Name = vehicleMakeView.Name;
-            if(vehicleMakeView.Abrv != null)
-                toBeUpdated.Abrv = vehicleMakeView.Abrv;
+                if(toBeUpdated == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Model not found");
 
-            var response = await MakeService.Update(AutoMapper.Mapper.Map<VehicleMakeDomain>(toBeUpdated));
+                if (vehicleMakeView.Name != null)
+                    toBeUpdated.Name = vehicleMakeView.Name;
+                if (vehicleMakeView.Abrv != null)
+                    toBeUpdated.Abrv = vehicleMakeView.Abrv;
 
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+                var response = await MakeService.Update(AutoMapper.Mapper.Map<VehicleMakeDomain>(toBeUpdated));
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't update data. Database error.");
+            }
+
         }
 
     }

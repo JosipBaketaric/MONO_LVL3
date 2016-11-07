@@ -40,7 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MakeRepositoryTest.cs" />
+    <Compile Include="ModelRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LVL3.Repository.Common\LVL3.Repository.Common.csproj">
+      <Project>{dd6b95aa-d7e0-4c25-b59c-d1523af19a1a}</Project>
+      <Name>LVL3.Repository.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

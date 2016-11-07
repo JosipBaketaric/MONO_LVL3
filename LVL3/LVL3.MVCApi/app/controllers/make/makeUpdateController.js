@@ -6,24 +6,30 @@ function makeUpdateController($scope, $http, $stateParams, $window, $state) {
         var id = $stateParams.maker;
         $http.get('/api/make/get?id=' + id).success(function (data) {
             $scope.updateData = data;
-        });
+        })
+        .error(function (data) {
+           $window.alert("Error! " + data.Message);
+        })
     }
 
     $scope.UpdateMake = function () {
        
-        if ($scope.Name == null || $scope.Abrv == null) {
+        if ($scope.updateData.Name == null || $scope.updateData.Abrv == null) {
             $window.alert("Please fill all fields");
         }
         else {
             var obj = {
-                Name: $scope.Name,
-                Abrv: $scope.Abrv,
+                Name: $scope.updateData.Name,
+                Abrv: $scope.updateData.Abrv,
                 VehicleMakeId: $scope.updateData.VehicleMakeId
             };
 
             $http.put('/api/make/update', obj).success(function (data) {
                 $window.alert("Updated!");
-            });
+            })
+            .error(function (data) {
+                $window.alert("Error! " + data.Message);
+            })
         }
     }
 

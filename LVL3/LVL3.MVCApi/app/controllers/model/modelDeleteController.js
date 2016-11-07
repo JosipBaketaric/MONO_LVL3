@@ -9,6 +9,9 @@ function modelDeleteController($scope, $http, $stateParams, $window, $state) {
                 $scope.response = data;
                 $scope.getAllModels();
             })
+            .error(function (data) {
+                $window.alert("Error! " + data.Message);
+            })
         };
         //Refresh data  (had to do it twice to work :P)
         $scope.getAllModels();

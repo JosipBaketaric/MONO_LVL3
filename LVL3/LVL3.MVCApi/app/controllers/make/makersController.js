@@ -11,8 +11,9 @@ function makersController($scope, $http, $window) {
             $http.get('/api/make/getall').success(function (data) {
                 $scope.data = data;
             })
-        .error(function () {
+        .error(function (data) {
             $scope.error = "An error has occured while trying to get all makers";
+            $window.alert("Error! " + data.Message);
         });
     };
     
@@ -22,6 +23,9 @@ function makersController($scope, $http, $window) {
         if ($window.confirm('Are you sure?')) {
             $http.delete('/api/make/delete?id=' + id).success(function (data) {
                 $scope.response = data;
+            })
+            .error(function (data) {
+                $window.alert("Error! " + data.Message);
             })
         }       
     };

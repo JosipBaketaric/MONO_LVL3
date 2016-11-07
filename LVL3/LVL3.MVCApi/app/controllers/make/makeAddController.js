@@ -16,6 +16,11 @@ function makeAddController($scope, $http, $stateParams, $window, $state) {
             $http.post('/api/make/add', obj).success(function (data) {
                 $scope.response = data;
                 console.log(data);
+                $window.alert("Success");
+            })
+            .error(function (data) {
+                $scope.error = "An error has occured while trying to add maker";
+                $window.alert("Error! " + data.Message);
             });
 
             //Clear model and form

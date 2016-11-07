@@ -13,6 +13,8 @@ namespace LVL3.MVCApi
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //ignore template route
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

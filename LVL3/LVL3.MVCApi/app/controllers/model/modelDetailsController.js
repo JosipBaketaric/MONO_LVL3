@@ -7,12 +7,18 @@ function modelDetailsController($scope, $http, $stateParams) {
         $scope.model = data;
 
         $scope.modelDetailsMakerName(data.VehicleMakeId);
-    });
+    })
+    .error(function (data) {
+        $window.alert("Error! " + data.Message);
+    })
 
     $scope.modelDetailsMakerName = function (id) {
         $http.get('/api/make/get?id=' + id).success(function (data) {
             $scope.model.VehicleMakeName = data.Name;
-        });
+        })
+        .error(function (data) {
+            $window.alert("Error! " + data.Message);
+        })
     };
 
 }

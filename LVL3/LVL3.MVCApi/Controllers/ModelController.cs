@@ -29,59 +29,107 @@ namespace LVL3.MVCApi.Controllers
         [Route("getall")]
         public async Task<HttpResponseMessage> GetAll()
         {
-            var response = AutoMapper.Mapper.Map<IEnumerable<VehicleModelView>>( await ModelService.ReadAll() );
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            try
+            {
+                var response = AutoMapper.Mapper.Map<IEnumerable<VehicleModelView>>(await ModelService.ReadAll());
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't get data. Database error.");
+            }
         }
 
         [HttpGet]
         [Route("get")]
         public async Task<HttpResponseMessage> Get(Guid id)
         {
-            var response = AutoMapper.Mapper.Map<VehicleModelView>(await ModelService.Read(id));
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            try
+            {
+                var response = AutoMapper.Mapper.Map<VehicleModelView>(await ModelService.Read(id));
+
+                if(response == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Bad id.");
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't get data. Database error.");
+            }
         }
 
         [HttpDelete]
         [Route("delete")]
         public async Task<HttpResponseMessage> Delete(Guid id)
         {
-            var response = await ModelService.Delete(id);
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            try
+            {
+                var response = await ModelService.Delete(id);
+
+                if(response == 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't delete model.");
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't delete data. Database error.");
+            }
         }
 
         [HttpPost]
         [Route("add")]
         public async Task<HttpResponseMessage> Add(VehicleModelView vehicleModelView)
-        {       
-            if(vehicleModelView.Name == null || vehicleModelView.Abrv == null || vehicleModelView.VehicleMakeId == null)
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Model is not complete. Please provide name, abrv and make id");
+        {
+            try
+            {
+                if (vehicleModelView.Name == null || vehicleModelView.Abrv == null || vehicleModelView.VehicleMakeId == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Model is not complete. Please provide name, abrv and make id");
 
-            var fMakerExist = await MakeService.Read(vehicleModelView.VehicleMakeId);
+                var fMakerExist = await MakeService.Read(vehicleModelView.VehicleMakeId);
 
-            if(fMakerExist == null)
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid VehicleMakeId");
+                if (fMakerExist == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid VehicleMakeId");
 
-            vehicleModelView.VehicleModelId = Guid.NewGuid();
+                vehicleModelView.VehicleModelId = Guid.NewGuid();
 
-            var response = await ModelService.Add( AutoMapper.Mapper.Map<VehicleModelDomain>(vehicleModelView) );
+                var response = await ModelService.Add(AutoMapper.Mapper.Map<VehicleModelDomain>(vehicleModelView));
 
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't add model. Database error.");
+            }
+
         }
 
         [HttpPut]
         [Route("update")]
         public async Task<HttpResponseMessage> Update(VehicleModelView vehicleModelView)
         {
-            var toBeUpdated = await ModelService.Read(vehicleModelView.VehicleModelId);
+            try
+            {
+                var toBeUpdated = await ModelService.Read(vehicleModelView.VehicleModelId);
 
-            if (vehicleModelView.Name != null)
-                toBeUpdated.Name = vehicleModelView.Name;
-            if (vehicleModelView.Abrv != null)
-                toBeUpdated.Abrv = vehicleModelView.Abrv;
+                if (vehicleModelView.Name != null)
+                    toBeUpdated.Name = vehicleModelView.Name;
+                if (vehicleModelView.Abrv != null)
+                    toBeUpdated.Abrv = vehicleModelView.Abrv;
 
-            var response = await ModelService.Update(AutoMapper.Mapper.Map<VehicleModelDomain>(toBeUpdated));
+                var response = await ModelService.Update(AutoMapper.Mapper.Map<VehicleModelDomain>(toBeUpdated));
 
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+                if(response == 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't update model.");
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't update model. Database error.");
+            }
+           
         }
 
 

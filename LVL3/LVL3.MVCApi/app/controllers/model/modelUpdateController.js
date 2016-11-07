@@ -11,19 +11,22 @@ function modelUpdateController($scope, $http, $stateParams, $window, $state) {
 
     $scope.UpdateMake = function () {
 
-        if ($scope.Name == null || $scope.Abrv == null) {
+        if ($scope.updateData.Name == null || $scope.updateData.Abrv == null) {
             $window.alert("Please fill all fields");
         }
         else {
             var obj = {
-                Name: $scope.Name,
-                Abrv: $scope.Abrv,
+                Name: $scope.updateData.Name,
+                Abrv: $scope.updateData.Abrv,
                 VehicleModelId: $scope.updateData.VehicleModelId
             };
 
             $http.put('/api/model/update', obj).success(function (data) {
                 $window.alert("Updated!");
-            });
+            })
+            .error(function (data) {
+                $window.alert("Error! " + data.Message);
+            })
         }
     }
 

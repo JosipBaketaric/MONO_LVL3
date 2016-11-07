@@ -17,7 +17,10 @@ function modelAddController($scope, $http, $stateParams, $window, $state) {
             $http.post('/api/model/add', obj).success(function (data) {
                 $scope.response = data;
                 console.log(data);
-            });
+            })
+            .error(function (data) {
+                $window.alert("Error! " + data.Message);
+            })
 
             //Clear model and form
             $scope.modelAddForm.$setPristine(true);

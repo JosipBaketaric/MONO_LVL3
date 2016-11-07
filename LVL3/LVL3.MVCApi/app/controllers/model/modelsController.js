@@ -16,8 +16,8 @@ function modelsController($scope, $http, $window, $state) {
             //call fetchMakers
             $scope.fetchMakers();
         })
-        .error(function () {
-            $scope.error = "An Error has occured while trying to get all models";
+        .error(function (data) {
+            $window.alert("Error! " + data.Message);
         });
 
 
@@ -27,6 +27,9 @@ function modelsController($scope, $http, $window, $state) {
 
                 //call injectMakerName
                 $scope.injectMakerName();
+            })
+            .error(function (data) {
+                $window.alert("Error! " + data.Message);
             })
         }
 
