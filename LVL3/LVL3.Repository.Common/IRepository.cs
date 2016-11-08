@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace LVL3.Repository.Common
         Task<int> Update<T>(T entity) where T : class;
         Task<int> Delete<T>(T entity) where T : class;
         Task<int> Delete<T>(Guid id) where T : class;
+        IQueryable<T> GetWhereQuery<T>() where T : class;
     }
 
 }

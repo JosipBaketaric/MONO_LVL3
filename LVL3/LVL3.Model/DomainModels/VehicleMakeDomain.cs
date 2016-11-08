@@ -12,6 +12,6 @@ namespace LVL3.Model.DomainModels
         public string Name { get; set; }
         public string Abrv { get; set; }
 
-        public virtual ICollection<VehicleModel> VehicleModel { get; set; }
+        public ICollection<IVehicleModelDomain> VehicleModel { get; set; }
     }
 }

@@ -12,10 +12,12 @@ namespace LVL3.Service
     public class MakeService : IMakeService
     {
         protected IMakeRepository MakeRepository { get; private set; }
+        protected IModelRepository ModelRepository { get; private set; }
 
-        public MakeService(IMakeRepository makeRepository)
+        public MakeService(IMakeRepository makeRepository, IModelRepository modelRepository)
         {
             this.MakeRepository = makeRepository;
+            this.ModelRepository = modelRepository;
         }
 
         public async Task<int> Add(IVehicleMakeDomain entry)
@@ -35,12 +37,20 @@ namespace LVL3.Service
 
         public async Task<IVehicleMakeDomain> Read(Guid id)
         {
-            return await MakeRepository.Get(id);
+            //Get maker
+            var response = await MakeRepository.Get(id);
+            //Get his models
+            var models = await ModelRepository.getMakersModels(response.VehicleMakeId);
+            //Inject them 
+            response.VehicleModel = models;
+            
+            return response;
         }
 
         public async Task<IEnumerable<IVehicleMakeDomain>> ReadAll()
         {
-            return await MakeRepository.GetAll();
+            var response = await MakeRepository.GetAll();
+            return response;
         }
 
         public async Task<int> Update(IVehicleMakeDomain entry)

@@ -12,6 +12,6 @@ namespace LVL3.Model.ViewModels
         public string Name { get; set; }
         public string Abrv { get; set; }
 
-        public virtual ICollection<VehicleModel> VehicleModel { get; set; }
+        public ICollection<IVehicleModelView> VehicleModel { get; set; }
     }
 }

@@ -16,7 +16,7 @@ function modelAddController($scope, $http, $stateParams, $window, $state) {
 
             $http.post('/api/model/add', obj).success(function (data) {
                 $scope.response = data;
-                console.log(data);
+                $window.alert("Success");
             })
             .error(function (data) {
                 $window.alert("Error! " + data.Message);

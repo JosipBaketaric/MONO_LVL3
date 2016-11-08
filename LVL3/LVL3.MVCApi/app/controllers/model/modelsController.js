@@ -7,48 +7,15 @@ function modelsController($scope, $http, $window, $state) {
     var makers;
 
     $scope.getAllModels = function () {
-        console.log("get all models");
         //get all data
         $http.get('/api/model/getall').success(function (data) {
             $scope.dataModel = data;
             models = $scope.dataModel;
-
-            //call fetchMakers
-            $scope.fetchMakers();
         })
         .error(function (data) {
             $window.alert("Error! " + data.Message);
         });
 
-
-        $scope.fetchMakers = function () {
-            $http.get('/api/make/getall').success(function (data) {
-                makers = data;
-
-                //call injectMakerName
-                $scope.injectMakerName();
-            })
-            .error(function (data) {
-                $window.alert("Error! " + data.Message);
-            })
-        }
-
-
-         
-        $scope.injectMakerName = function () {
-            //loop
-            //add maker name to model object
-            for (var i = 0; i < models.length; i++) {   //for each model find his maker
-                for (var j = 0; j < makers.length; j++) {
-                    if (models[i].VehicleMakeId == makers[j].VehicleMakeId) {
-                        $scope.dataModel[i].VehicleMakeName = makers[j].Name;
-                        break;
-                    }
-                }
-            }//end of for
-            console.log("inject maker name");
-
-        };//End of function
 
     };
 

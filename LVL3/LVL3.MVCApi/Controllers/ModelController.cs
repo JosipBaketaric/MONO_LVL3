@@ -31,7 +31,9 @@ namespace LVL3.MVCApi.Controllers
         {
             try
             {
+                var makers = await MakeService.ReadAll();
                 var response = AutoMapper.Mapper.Map<IEnumerable<VehicleModelView>>(await ModelService.ReadAll());
+
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch

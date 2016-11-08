@@ -53,14 +53,17 @@ namespace LVL3.Repository.Repositorys
             return await Context.Set<T>().FirstAsync(match);
         }
 
+
         public async Task<T> Get<T>(Guid id) where T : class
         {
-            return await Context.Set<T>().FindAsync(id);
+            var response = await Context.Set<T>().FindAsync(id);
+            return response;
         }
 
         public async Task<IEnumerable<T>> GetAll<T>() where T : class
         {
-            return await Context.Set<T>().ToListAsync();
+            var response = await Context.Set<T>().ToListAsync();
+            return response;
         }
 
         public async Task<IEnumerable<T>> GetRangeAsync<T>(Expression<Func<T, bool>> match) where T : class
@@ -70,9 +73,13 @@ namespace LVL3.Repository.Repositorys
 
         public async Task<int> Update<T>(T entity) where T : class
         {
-            Context.Set<T>().AddOrUpdate(entity);
-
+            Context.Set<T>().AddOrUpdate(entity);            
             return await Context.SaveChangesAsync();
+        }
+
+        public IQueryable<T> GetWhereQuery<T>() where T : class
+        {
+            return Context.Set<T>();
         }
 
     }

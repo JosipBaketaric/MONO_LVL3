@@ -9,5 +9,6 @@ namespace LVL3.Model.Common.IView
         Guid VehicleMakeId { get; set; }
         string Name { get; set; }
         string Abrv { get; set; }
+        IVehicleMakeView VehicleMake { get; set; }
     }
 }

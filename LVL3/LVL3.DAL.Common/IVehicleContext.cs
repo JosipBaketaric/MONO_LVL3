@@ -20,5 +20,6 @@ namespace LVL3.DAL.Common
         void ExecuteSqlCommand(string p, params object[] o);
         void ExecuteSqlCommand(string p);
         Task<int> SaveChangesAsync();
+        DbContextConfiguration Configuration { get; }
     }
 }

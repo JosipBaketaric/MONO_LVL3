@@ -9,7 +9,7 @@ namespace LVL3.DAL
     public class VehicleContext : DbContext, IVehicleContext
     {
         public VehicleContext() : base("VehicleDB")
-        {
+        {          
         }
 
         public DbSet<VehicleMake> VehicleMakes { get; set; }

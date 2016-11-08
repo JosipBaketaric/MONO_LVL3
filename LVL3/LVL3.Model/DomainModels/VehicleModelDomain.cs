@@ -11,6 +11,6 @@ namespace LVL3.Model.DomainModels
         public Guid VehicleMakeId { get; set; }
         public string Name { get; set; }
         public string Abrv { get; set; }
-        public virtual VehicleMake VehicleMake { get; set; }
+        public IVehicleMakeDomain VehicleMake { get; set; }
     }
 }

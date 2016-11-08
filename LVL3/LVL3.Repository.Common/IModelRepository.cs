@@ -13,5 +13,6 @@ namespace LVL3.Repository.Common
         Task<int> Update(IVehicleModelDomain entity);
         Task<int> Delete(IVehicleModelDomain entity);
         Task<int> Delete(Guid id);
+        Task<ICollection<IVehicleModelDomain>> getMakersModels(Guid id);
     }
 }

@@ -40,7 +40,8 @@ namespace LVL3.Service
 
         public async Task<IEnumerable<IVehicleModelDomain>> ReadAll()
         {
-            return await ModelRepository.GetAll();
+            var response = await ModelRepository.GetAll();
+            return response;
         }
 
         public async Task<int> Update(IVehicleModelDomain entry)

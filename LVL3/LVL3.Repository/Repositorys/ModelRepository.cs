@@ -3,6 +3,8 @@ using LVL3.Model.DatabaseModels;
 using LVL3.Repository.Common;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LVL3.Repository.Repositorys
@@ -35,17 +37,35 @@ namespace LVL3.Repository.Repositorys
 
         public async Task<IVehicleModelDomain> Get(Guid id)
         {
-            return AutoMapper.Mapper.Map<IVehicleModelDomain>(await Repository.Get<VehicleModel>(id));
+            try
+            {
+                var response = AutoMapper.Mapper.Map<IVehicleModelDomain>(await Repository.Get<VehicleModel>(id));
+                return response;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<IEnumerable<IVehicleModelDomain>> GetAll()
         {
-            return AutoMapper.Mapper.Map<IEnumerable<IVehicleModelDomain>>(await Repository.GetAll<VehicleModel>());
+            //Get data
+            var response = AutoMapper.Mapper.Map<IEnumerable<IVehicleModelDomain>>(await Repository.GetWhereQuery<VehicleModel>().Include(x => x.VehicleMake).ToListAsync() );
+            return response;
         }
 
         public async Task<int> Update(IVehicleModelDomain entity)
         {
             return await Repository.Update<VehicleModel>(AutoMapper.Mapper.Map<VehicleModel>(entity));
         }
+
+        public async Task<ICollection<IVehicleModelDomain>> getMakersModels(Guid id)
+        {
+            var response = await Repository.GetWhereQuery<VehicleModel>().Where(x => x.VehicleMakeId == id).ToListAsync();
+            var mappedResponse = AutoMapper.Mapper.Map<ICollection<IVehicleModelDomain>>(response);
+            return mappedResponse;
+        }
+
     }
 }
