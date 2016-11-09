@@ -77,10 +77,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LVL3.Common\LVL3.Common.csproj">
-      <Project>{3e421644-f6b5-4350-b54b-94eb84c690f5}</Project>
-      <Name>LVL3.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
       <Project>{63a8c737-a608-4321-8795-e345be2a39a5}</Project>
       <Name>LVL3.Model.Common</Name>

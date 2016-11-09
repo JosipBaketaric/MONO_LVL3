@@ -1172,10 +1172,6 @@
       <Project>{fbf2f256-50dd-4520-a336-8f90415e748d}</Project>
       <Name>LVL3.DAL.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LVL3.DAL\LVL3.DAL.csproj">
-      <Project>{f97d809e-73ec-42e0-be5d-35db52cf0c0c}</Project>
-      <Name>LVL3.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LVL3.DependencyResolver\LVL3.DependencyResolver.csproj">
       <Project>{3ecffd03-44cf-447b-ac75-00d00ccac667}</Project>
       <Name>LVL3.DependencyResolver</Name>

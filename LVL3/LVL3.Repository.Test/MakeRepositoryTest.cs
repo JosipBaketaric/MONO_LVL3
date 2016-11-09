@@ -19,7 +19,7 @@ namespace LVL3.Repository.Test
         {
             //Arrange
             VehicleMakeDomain testObject = new VehicleMakeDomain() { Name = "testName", Abrv = "testAbrv", VehicleMakeId = Guid.NewGuid(), VehicleModel = null };
-            DependencyResolver.AutoMapperConfig.MappingConfig.RegisterMaps();
+
             MakeRepository makeRepositroyService = new MakeRepository(new Repositorys.Repository(new VehicleContext(), new UnitOfWorkFactory(new UnitOfWork(new VehicleContext()))));
             //Act
             var result = await makeRepositroyService.Add(testObject);

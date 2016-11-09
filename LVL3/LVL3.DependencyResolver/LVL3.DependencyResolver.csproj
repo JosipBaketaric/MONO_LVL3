@@ -83,6 +83,8 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfig\MappingConfig.cs" />
     <Compile Include="BottomLayer.cs" />
+    <Compile Include="DBInit\DBInit.cs" />
+    <Compile Include="DBInit\VehicleInit.cs" />
     <Compile Include="MiddleLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TopLayer.cs" />

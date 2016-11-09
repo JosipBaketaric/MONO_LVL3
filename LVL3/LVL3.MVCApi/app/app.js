@@ -3,7 +3,7 @@
 var appModule = angular.module('appModule', ['ui.router', 'angularUtils.directives.dirPagination']);
 
 //configure routes
-appModule.config(function ($stateProvider, $urlRouterProvider) {
+appModule.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/make');
 
@@ -43,5 +43,10 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
         url: '/model/update/:model',
         templateUrl: 'app/views/model/update.html'
     })
+
+    //$locationProvider.html5Mode({
+    //    enabled: true,
+    //    requireBase: false
+    //});
 
 });
