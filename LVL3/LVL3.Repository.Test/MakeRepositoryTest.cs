@@ -7,24 +7,32 @@ using LVL3.DAL;
 using System.Threading.Tasks;
 using Nito.AsyncEx.UnitTests;
 using LVL3.Model.Common.IDomain;
+using LVL3.MVCApi.AutoMapperConfig;
+using Moq;
 
 namespace LVL3.Repository.Test
 {
-     [AsyncTestClass]
+     [TestClass]
     public class MakeRepositoryTest
     {
 
         [TestMethod]
-        public async Task TestAdd()
+        public void TestAdd()
         {
             //Arrange
-            VehicleMakeDomain testObject = new VehicleMakeDomain() { Name = "testName", Abrv = "testAbrv", VehicleMakeId = Guid.NewGuid(), VehicleModel = null };
-
-            MakeRepository makeRepositroyService = new MakeRepository(new Repositorys.Repository(new VehicleContext(), new UnitOfWorkFactory(new UnitOfWork(new VehicleContext()))));
+            IncludeAllMappings.include();
+            var vMake = new VehicleMakeDomain() { Name = "testName", Abrv = "testAbrv", VehicleMakeId = Guid.NewGuid(), VehicleModel = null };
+            var context = new VehicleContext();
+            var repository = new Repositorys.Repository(context, new UnitOfWorkFactory(new UnitOfWork(context)));
+            var testRepository = new MakeRepository(repository);
             //Act
-            var result = await makeRepositroyService.Add(testObject);
-            //Assert
-            Assert.AreEqual(1, result);
+            Task.Run(async () =>
+            {
+                var result = await testRepository.Add(vMake);
+                //Assert
+                Assert.AreEqual(1, result);
+            }).GetAwaiter().GetResult();
+
         }
        
 

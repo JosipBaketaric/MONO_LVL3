@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LVL3.MVCApi.AutoMapperConfig;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -12,12 +13,7 @@ namespace LVL3.MVCApi
         {
             DependencyResolver.DBInit.DBInit.CallDBInit();
 
-            Mapper.Initialize(cfg =>
-                cfg.AddProfiles(new[] {
-                    typeof(LVL3.DependencyResolver.AutoMapperConfig.MappingConfig),
-                    typeof(LVL3.MVCApi.AutoMapperConfig.Mapping)
-                    })
-                );
+            IncludeAllMappings.include();
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
