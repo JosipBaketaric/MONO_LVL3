@@ -86,7 +86,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="MakeRepositoryTest.cs" />
-    <Compile Include="MakeRepositoryTestda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +100,10 @@
     <ProjectReference Include="..\LVL3.DAL\LVL3.DAL.csproj">
       <Project>{f97d809e-73ec-42e0-be5d-35db52cf0c0c}</Project>
       <Name>LVL3.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LVL3.DependencyResolver\LVL3.DependencyResolver.csproj">
+      <Project>{3ecffd03-44cf-447b-ac75-00d00ccac667}</Project>
+      <Name>LVL3.DependencyResolver</Name>
     </ProjectReference>
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
       <Project>{63a8c737-a608-4321-8795-e345be2a39a5}</Project>

@@ -69,20 +69,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDatabase\IVehicleMake.cs" />
-    <Compile Include="IDatabase\IVehicleModel.cs" />
     <Compile Include="IDomain\IVehicleMakeDomain.cs" />
     <Compile Include="IDomain\IVehicleModelDomain.cs" />
-    <Compile Include="IView\IVehicleMakeView.cs" />
-    <Compile Include="IView\IVehicleModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using LVL3.Model.DatabaseModels;
+using LVL3.DAL.DatabaseModels;
 using LVL3.DAL.Common;
 using System;
 

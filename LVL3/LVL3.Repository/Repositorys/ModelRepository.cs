@@ -1,5 +1,5 @@
 ﻿using LVL3.Model.Common.IDomain;
-using LVL3.Model.DatabaseModels;
+using LVL3.DAL.DatabaseModels;
 using LVL3.Repository.Common;
 using System;
 using System.Collections.Generic;

@@ -13,42 +13,20 @@ namespace LVL3.Repository.Test
      [AsyncTestClass]
     public class MakeRepositoryTest
     {
-        protected VehicleMakeDomain TestObject { get; private set; }
-        private MakeRepository MakeRepositroyService = new MakeRepository(new Repositorys.Repository(new VehicleContext(), new UnitOfWorkFactory(new UnitOfWork(new VehicleContext()))));
 
         [TestMethod]
         public async Task TestAdd()
         {
             //Arrange
-            TestObject = new VehicleMakeDomain { Name = "test1", Abrv = "testAbrv", VehicleMakeId = Guid.NewGuid() };
+            VehicleMakeDomain testObject = new VehicleMakeDomain() { Name = "testName", Abrv = "testAbrv", VehicleMakeId = Guid.NewGuid(), VehicleModel = null };
+            DependencyResolver.AutoMapperConfig.MappingConfig.RegisterMaps();
+            MakeRepository makeRepositroyService = new MakeRepository(new Repositorys.Repository(new VehicleContext(), new UnitOfWorkFactory(new UnitOfWork(new VehicleContext()))));
             //Act
-            var result = await MakeRepositroyService.Add(TestObject);
+            var result = await makeRepositroyService.Add(testObject);
             //Assert
             Assert.AreEqual(1, result);
         }
-
-        [TestMethod]
-        public async Task TestGet()
-        {
-            //Act
-            var result = await MakeRepositroyService.Get(TestObject.VehicleMakeId);
-            //Assert
-            Assert.AreEqual(TestObject, result);
-        }
-
-        [TestMethod]
-        public async Task TestUpdate()
-        {
-        }
-
-        [TestMethod]
-        public async Task TestDelete()
-        {
-            //Act
-            var result = await MakeRepositroyService.Delete(TestObject.VehicleMakeId);
-            //Assert
-            Assert.AreEqual(0, result);
-        }
+       
 
 
     }

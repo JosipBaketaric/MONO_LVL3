@@ -244,6 +244,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="AutoMapperConfig\Mapping.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\MakeController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
@@ -257,6 +258,8 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\VehicleMakeView.cs" />
+    <Compile Include="ViewModels\VehicleModelView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />

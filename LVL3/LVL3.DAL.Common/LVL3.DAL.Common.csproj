@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDatabase\IVehicleMake.cs" />
+    <Compile Include="IDatabase\IVehicleModel.cs" />
     <Compile Include="IVehicleContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

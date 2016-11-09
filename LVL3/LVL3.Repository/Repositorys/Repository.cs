@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using LVL3.DAL;
-using System.Data.Entity.Infrastructure;
 using LVL3.DAL.Common;
 using System.Data.Entity.Migrations;
 

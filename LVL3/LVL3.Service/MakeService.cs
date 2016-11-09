@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LVL3.Model.Common.IView;
 using LVL3.Repository.Common;
 using LVL3.Model.Common.IDomain;
 using LVL3.Model.DomainModels;
@@ -49,8 +48,16 @@ namespace LVL3.Service
 
         public async Task<IEnumerable<IVehicleMakeDomain>> ReadAll()
         {
-            var response = await MakeRepository.GetAll();
-            return response;
+            try
+            {
+                var response = await MakeRepository.GetAll();
+                return response;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         public async Task<int> Update(IVehicleMakeDomain entry)

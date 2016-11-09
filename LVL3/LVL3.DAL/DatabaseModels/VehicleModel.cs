@@ -1,8 +1,8 @@
-﻿using System;
+﻿using LVL3.DAL.Common.IDatabase;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using LVL3.Model.Common.IDatabase;
 
-namespace LVL3.Model.DatabaseModels
+namespace LVL3.DAL.DatabaseModels
 {
     public class VehicleModel : IVehicleModel
     {

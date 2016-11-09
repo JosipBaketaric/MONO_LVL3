@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LVL3.Model.Common.IDatabase
+namespace LVL3.DAL.Common.IDatabase
 {
     public interface IVehicleModel
     {

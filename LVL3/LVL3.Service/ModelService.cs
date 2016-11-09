@@ -2,10 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LVL3.Model.Common.IView;
 using LVL3.Model.Common.IDomain;
 using LVL3.Repository.Common;
-using LVL3.Model.DomainModels;
 
 namespace LVL3.Service
 {

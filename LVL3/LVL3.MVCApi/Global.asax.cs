@@ -1,4 +1,5 @@
-﻿using LVL3.DAL;
+﻿using AutoMapper;
+using LVL3.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,8 +17,15 @@ namespace LVL3.MVCApi
         protected void Application_Start()
         {
 
-            DependencyResolver.AutoMapperConfig.MappingConfig.RegisterMaps();    //From Models
-            Database.SetInitializer<VehicleContext>(new VehicleInitializer());      //From DAL
+
+            Database.SetInitializer<VehicleContext>(new VehicleInitializer());
+
+            Mapper.Initialize(cfg =>
+                cfg.AddProfiles(new[] {
+                    typeof(LVL3.DependencyResolver.AutoMapperConfig.MappingConfig),
+                    typeof(LVL3.MVCApi.AutoMapperConfig.Mapping)
+                    })
+                );
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

@@ -1,5 +1,5 @@
 ﻿using LVL3.Model.DomainModels;
-using LVL3.Model.ViewModels;
+using LVL3.MVCApi.ViewModels;
 using LVL3.Service.Common;
 using System;
 using System.Collections.Generic;

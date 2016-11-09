@@ -85,6 +85,10 @@
       <Project>{fbf2f256-50dd-4520-a336-8f90415e748d}</Project>
       <Name>LVL3.DAL.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LVL3.DAL\LVL3.DAL.csproj">
+      <Project>{f97d809e-73ec-42e0-be5d-35db52cf0c0c}</Project>
+      <Name>LVL3.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
       <Project>{63a8c737-a608-4321-8795-e345be2a39a5}</Project>
       <Name>LVL3.Model.Common</Name>

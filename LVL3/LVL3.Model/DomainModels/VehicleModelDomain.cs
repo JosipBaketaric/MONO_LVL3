@@ -1,6 +1,4 @@
-﻿using LVL3.Model.Common.IDatabase;
-using LVL3.Model.Common.IDomain;
-using LVL3.Model.DatabaseModels;
+﻿using LVL3.Model.Common.IDomain;
 using System;
 
 namespace LVL3.Model.DomainModels

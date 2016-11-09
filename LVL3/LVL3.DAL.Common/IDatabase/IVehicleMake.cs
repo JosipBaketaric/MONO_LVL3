@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LVL3.Model.Common.IDatabase
+namespace LVL3.DAL.Common.IDatabase
 {
     public interface IVehicleMake
     {

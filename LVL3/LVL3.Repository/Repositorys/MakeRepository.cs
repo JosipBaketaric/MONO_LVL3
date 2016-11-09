@@ -3,12 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LVL3.Model.Common.IDomain;
-using LVL3.Model.DatabaseModels;
+using LVL3.DAL.DatabaseModels;
 using LVL3.Model.DomainModels;
-using LVL3.Model.Common.IDatabase;
-using LVL3.Model.Common.IView;
-using System.Linq;
-using System.Data.Entity;
+using LVL3.DAL.Common.IDatabase;
 
 namespace LVL3.Repository.Repositorys
 {
