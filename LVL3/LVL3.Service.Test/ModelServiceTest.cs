@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using LVL3.Model.Common.IDomain;
+using System.Linq;
 
 namespace LVL3.Service.Test
 {
@@ -41,10 +42,7 @@ namespace LVL3.Service.Test
             {
                 var response = await makeService.ReadAll();
                 Assert.IsNotNull(response);
-                foreach(var item in response)
-                {
-                    targetMake = item;
-                }
+                targetMake = response.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             //Create model
@@ -87,10 +85,7 @@ namespace LVL3.Service.Test
             {
                 var response = await makeService.ReadAll();
                 Assert.IsNotNull(response);
-                foreach (var item in response)
-                {
-                    targetMake = item;
-                }
+                targetMake = response.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             //Create model
@@ -109,10 +104,7 @@ namespace LVL3.Service.Test
             {
                 var response = await testService.ReadAll();
                 Assert.IsNotNull(response);
-                foreach(var item in response)
-                {
-                    targetModel = item;
-                }
+                targetModel = response.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             Task.Run(async () =>
@@ -150,10 +142,7 @@ namespace LVL3.Service.Test
             {
                 var response = await makeService.ReadAll();
                 Assert.IsNotNull(response);
-                foreach (var item in response)
-                {
-                    targetMake = item;
-                }
+                targetMake = response.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             //Create model
@@ -202,10 +191,7 @@ namespace LVL3.Service.Test
             {
                 var response = await makeService.ReadAll();
                 Assert.IsNotNull(response);
-                foreach (var item in response)
-                {
-                    targetMake = item;
-                }
+                targetMake = response.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             //Create model
@@ -223,10 +209,7 @@ namespace LVL3.Service.Test
             {
                 var response = await testService.ReadAll();
                 Assert.IsNotNull(response);
-                foreach(var item in response)
-                {
-                    targetModel = item;
-                }
+                targetModel = response.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             targetModel.Name = "ModelServiceUpdateTestTested";

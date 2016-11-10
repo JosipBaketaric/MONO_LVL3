@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using LVL3.Model.Common.IDomain;
+using System.Linq;
 
 namespace LVL3.Service.Test
 {
@@ -54,10 +55,7 @@ namespace LVL3.Service.Test
             {
                 readAll = await testService.ReadAll();
                 Assert.IsNotNull(readAll);
-                foreach(var item in readAll)
-                {
-                    targetItem = item;
-                }
+                targetItem = readAll.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             Task.Run(async () =>
@@ -88,10 +86,7 @@ namespace LVL3.Service.Test
             {
                 readAll = await testService.ReadAll();
                 Assert.IsNotNull(readAll);
-                foreach (var item in readAll)
-                {
-                    targetItem = item;
-                }
+                targetItem = readAll.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             Task.Run(async () =>
@@ -143,10 +138,7 @@ namespace LVL3.Service.Test
             {
                 readAll = await testService.ReadAll();
                 Assert.IsNotNull(readAll);
-                foreach (var item in readAll)
-                {
-                    targetItem = item;
-                }
+                targetItem = readAll.LastOrDefault();
             }).GetAwaiter().GetResult();
 
             targetItem.Name = "MakeServiceReadTestTested";
