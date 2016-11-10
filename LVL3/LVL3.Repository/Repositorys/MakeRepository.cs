@@ -25,22 +25,38 @@ namespace LVL3.Repository.Repositorys
 
         public async Task<int> Delete(Guid id)
         {
-            var item = await Repository.Get<VehicleMake>(id);
+            try
+            {
+                var item = await Repository.Get<VehicleMake>(id);
 
-            return await Repository.Delete<VehicleMake>(item);
+                if (item == null)
+                    return 0;
+
+                return await Repository.Delete<VehicleMake>(item);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<int> Delete(IVehicleMakeDomain entity)
         {
-            return await Repository.Delete<VehicleMake>(AutoMapper.Mapper.Map<VehicleMake>(entity) );
+            try
+            {
+                return await Repository.Delete<VehicleMake>(AutoMapper.Mapper.Map<VehicleMake>(entity));
+            }
+           catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<IVehicleMakeDomain> Get(Guid id)
         {
             try
             {
-                var response = AutoMapper.Mapper.Map<VehicleMakeDomain>(await Repository.Get<VehicleMake>(id));
-                //get his models                
+                var response = AutoMapper.Mapper.Map<VehicleMakeDomain>(await Repository.Get<VehicleMake>(id));           
                 return response;
             }            
             catch(Exception ex)

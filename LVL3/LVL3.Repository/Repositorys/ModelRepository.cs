@@ -60,7 +60,7 @@ namespace LVL3.Repository.Repositorys
             return await Repository.Update<VehicleModel>(AutoMapper.Mapper.Map<VehicleModel>(entity));
         }
 
-        public async Task<ICollection<IVehicleModelDomain>> getMakersModels(Guid id)
+        public async Task<ICollection<IVehicleModelDomain>> GetMakersModels(Guid id)
         {
             var response = await Repository.GetWhereQuery<VehicleModel>().Where(x => x.VehicleMakeId == id).ToListAsync();
             var mappedResponse = AutoMapper.Mapper.Map<ICollection<IVehicleModelDomain>>(response);

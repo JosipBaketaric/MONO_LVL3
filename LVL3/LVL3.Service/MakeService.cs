@@ -39,7 +39,7 @@ namespace LVL3.Service
             //Get maker
             var response = await MakeRepository.Get(id);
             //Get his models
-            var models = await ModelRepository.getMakersModels(response.VehicleMakeId);
+            var models = await ModelRepository.GetMakersModels(response.VehicleMakeId);
             //Inject them 
             response.VehicleModel = models;
             

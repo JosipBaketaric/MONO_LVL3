@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E697214-B592-4C57-A415-75776072C517}</ProjectGuid>
+    <ProjectGuid>{7973C3B3-74ED-48CD-AB0F-B825A65E8B57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LVL3.Repository.Test</RootNamespace>
-    <AssemblyName>LVL3.Repository.Test</AssemblyName>
+    <RootNamespace>LVL3.Service.Test</RootNamespace>
+    <AssemblyName>LVL3.Service.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,44 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="AutoMapper.EF6, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.EF6.0.5.0\lib\net45\AutoMapper.EF6.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DelegateDecompiler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
-      <HintPath>..\packages\DelegateDecompiler.0.18.1\lib\net40-Client\DelegateDecompiler.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DelegateDecompiler.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
-      <HintPath>..\packages\DelegateDecompiler.EntityFramework.0.18.1\lib\net45\DelegateDecompiler.EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Mono.Reflection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mono.Reflection.1.0.0.0\lib\Mono.Reflection.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Moq, Version=4.5.23.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.5.23\lib\net45\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Nito.AsyncEx.UnitTests.MSTest, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AsyncUnitTests-MSTest.1.0.1\lib\net40-client\Nito.AsyncEx.UnitTests.MSTest.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -93,15 +61,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="MakeRepositoryTest.cs" />
+    <Compile Include="MakeServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ModelRepositoryTest.cs" />
+    <Compile Include="ModelServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LVL3.Common\LVL3.Common.csproj">
-      <Project>{3e421644-f6b5-4350-b54b-94eb84c690f5}</Project>
-      <Name>LVL3.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LVL3.DAL.Common\LVL3.DAL.Common.csproj">
       <Project>{fbf2f256-50dd-4520-a336-8f90415e748d}</Project>
       <Name>LVL3.DAL.Common</Name>
@@ -109,10 +73,6 @@
     <ProjectReference Include="..\LVL3.DAL\LVL3.DAL.csproj">
       <Project>{f97d809e-73ec-42e0-be5d-35db52cf0c0c}</Project>
       <Name>LVL3.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LVL3.DependencyResolver\LVL3.DependencyResolver.csproj">
-      <Project>{3ecffd03-44cf-447b-ac75-00d00ccac667}</Project>
-      <Name>LVL3.DependencyResolver</Name>
     </ProjectReference>
     <ProjectReference Include="..\LVL3.Model.Common\LVL3.Model.Common.csproj">
       <Project>{63a8c737-a608-4321-8795-e345be2a39a5}</Project>
@@ -133,6 +93,14 @@
     <ProjectReference Include="..\LVL3.Repository\LVL3.Repository.csproj">
       <Project>{3a08bced-15cf-45e7-8366-820c494de017}</Project>
       <Name>LVL3.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LVL3.Service.Common\LVL3.Service.Common.csproj">
+      <Project>{5965d45f-b366-4fd6-913f-014d3287c88b}</Project>
+      <Name>LVL3.Service.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LVL3.Service\LVL3.Service.csproj">
+      <Project>{27971e7d-bc6e-450e-93be-d7a123abce66}</Project>
+      <Name>LVL3.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
